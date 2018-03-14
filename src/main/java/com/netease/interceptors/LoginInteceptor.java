@@ -5,13 +5,16 @@ import com.netease.controller.BaseController;
 import com.netease.model.User;
 import com.netease.recventry.UserInfo;
 import com.netease.service.UserService;
+import com.netease.util.CookieUtils;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.HandlerInterceptor;
 import sun.misc.BASE64Encoder;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -39,12 +42,13 @@ public class LoginInteceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
-        //request = this.getRequest(request);
+        HttpSession session = request.getSession();
+
         if (userService == null) {//解决service为null无法注入问题
             BeanFactory factory = WebApplicationContextUtils.getRequiredWebApplicationContext(request.getServletContext());
             userService = (UserService) factory.getBean("userService");
         }
-        HttpSession session = request.getSession();
+
         Object userName = request.getParameter("userName");
         Object password = request.getParameter("password");
         if(userName == null && password == null) {
@@ -53,8 +57,15 @@ public class LoginInteceptor implements HandlerInterceptor {
         if(password == null ) {
             // 代表该用户不是第一次访问系统
             if (session.getAttribute(userName.toString()) != null) {
-                session.setMaxInactiveInterval(15 * 60);
-                return true;
+                // 首先通过cookie获得userName
+                String  nameFromCookie  = CookieUtils.getCookieValue(request,"NE_SHOPPING");
+                if(nameFromCookie != null ) {
+                    if (session.getAttribute(nameFromCookie) != null) {
+                        session.setMaxInactiveInterval(15 * 60);
+                        return true;
+                    }
+                }
+                return false;
             }
         }
         UserInfo userInfo = (UserInfo)session.getAttribute(userName.toString());
@@ -68,9 +79,10 @@ public class LoginInteceptor implements HandlerInterceptor {
                 return false;
             }
             // 设定session
-            session.setAttribute(userName.toString(), userInfo);
+            session.setAttribute(userName.toString(), new UserInfo(userName.toString(), password.toString()));
             session.setMaxInactiveInterval(15 * 60);
-
+            // 设置cookie
+            CookieUtils.setCookie(request, response,"NE_SHOPPING",userName.toString());
             return true;
         }
         if(!password.toString().equals(userInfo.getPassword())) {
