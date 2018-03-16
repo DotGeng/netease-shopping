@@ -29,4 +29,6 @@ public class LoginController extends BaseController{
     public ResponseStatus test(@ModelAttribute UserInfo userInfo, HttpSession session) {
         return success(session.getId(),"ok","1","");
     }
+
+
 }

@@ -12,7 +12,7 @@ public class WebInteceptorConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new LoginInteceptor()).addPathPatterns("/**")
-                .excludePathPatterns("/get/sessions/new", "/js/**", "/css/**", "get/index/not/login");
+                .excludePathPatterns("/get/sessions/new", "/get/index/not/login","/js/**", "/css/**", "/visitor/**");
         super.addInterceptors(registry);
     }
 }

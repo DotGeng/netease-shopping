@@ -8,6 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class GreetingController extends BaseController{
+
+    @RequestMapping("get/index/not/login")
+    public String getIndexWithoutLogin() {
+        return "/index";
+    }
+
     // 获取登录页面
     @RequestMapping("/get/sessions/new")
     public String hello() {
@@ -19,8 +25,7 @@ public class GreetingController extends BaseController{
     public String index() {
         return "/index";
     }
-    @RequestMapping("get/index/not/login")
-    public String getIndexWithoutLogin() {
-        return "/index";
-    }
+
+
+
 }

@@ -43,7 +43,8 @@ public class LoginInteceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
         HttpSession session = request.getSession();
-
+        String url = request.getRequestURI();
+        System.out.print(url);
         if (userService == null) {//解决service为null无法注入问题
             BeanFactory factory = WebApplicationContextUtils.getRequiredWebApplicationContext(request.getServletContext());
             userService = (UserService) factory.getBean("userService");
