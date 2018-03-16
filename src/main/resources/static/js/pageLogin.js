@@ -25,6 +25,7 @@
 							loading.hide();
 							// 请求成功的跳转地址
 							location.href = '/get/index?'+'userName='+value2;
+                            localStorage.setItem("userName",value2);
 						},
 						error:function(message){
 							loading.result(message||'登录失败');

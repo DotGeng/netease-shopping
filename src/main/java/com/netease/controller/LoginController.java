@@ -22,7 +22,11 @@ public class LoginController extends BaseController{
     // 登录
     @RequestMapping(value = "/post/sessions/create",method = RequestMethod.POST)
     public ResponseStatus login(@ModelAttribute UserInfo userInfo, HttpSession session) {
-        return success(session.getId(),"ok",userInfo.getUserName());
+        return success(session.getId(),"ok",userInfo.getUserName(),"");
     }
     // 注销
+    @RequestMapping(value = "/test",method = RequestMethod.GET)
+    public ResponseStatus test(@ModelAttribute UserInfo userInfo, HttpSession session) {
+        return success(session.getId(),"ok","1","");
+    }
 }

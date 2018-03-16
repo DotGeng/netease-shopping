@@ -40,5 +40,28 @@
 			}
 		}
 	};
+    /*ajax({
+        data:{userName:value1,password:value2},
+        url:'/test',
+		/!*dataType:'json',*!/
+        success:function(result){
+            loading.hide();
+            // 请求成功的跳转地址
+            location.href = '/get/index?'+'userName='+value2;
+        },
+        error:function(message){
+            loading.result(message||'登录失败');
+            isSubmiting = false;
+        }
+    });*/
+    var userName = localStorage.getItem('userName');
+    if ("" != userName || userName != null) {
+        document.getElementById('userNameForIndex').innerHTML = userName;
+        var logoutElements = document.getElementsByClassName("login");
+        for(var i = 0; i < logoutElements.length; i ++) {
+            logoutElements[i].style.display="none";
+		}
+        //
+    }
 	page.init();
 })(window,document);

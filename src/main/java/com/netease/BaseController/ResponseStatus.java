@@ -8,23 +8,27 @@ public class ResponseStatus {
     private String sessionId;
     private int code;
     private String msg;
-    private String content;
+    private String userName;
+    private Object content;
 
-    public ResponseStatus(int code, String msg, String content) {
+    public ResponseStatus(int code, String msg,String userName, Object content) {
         this.code = code;
         this.msg = msg;
+        this.userName = userName;
         this.content = content;
     }
-    public ResponseStatus(int code, String msg) {
+    public ResponseStatus(int code, String msg,String userName) {
         this.code = code;
         this.msg = msg;
+        this.userName = userName;
         this.content = "";
     }
 
-    public ResponseStatus(String sessionId, int code, String msg, String content) {
+    public ResponseStatus(String sessionId, int code, String msg,String userName, Object content) {
         this.sessionId = sessionId;
         this.code = code;
         this.msg = msg;
+        this.userName = userName;
         this.content = content;
     }
 
@@ -52,11 +56,19 @@ public class ResponseStatus {
         this.msg = msg;
     }
 
-    public String getContent() {
+    public Object getContent() {
         return content;
     }
 
-    public void setContent(String content) {
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public void setContent(Object content) {
         this.content = content;
     }
 }

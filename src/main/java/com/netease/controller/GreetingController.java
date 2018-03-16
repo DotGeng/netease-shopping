@@ -19,4 +19,8 @@ public class GreetingController extends BaseController{
     public String index() {
         return "/index";
     }
+    @RequestMapping("get/index/not/login")
+    public String getIndexWithoutLogin() {
+        return "/index";
+    }
 }
