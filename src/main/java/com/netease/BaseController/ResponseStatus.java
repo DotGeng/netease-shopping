@@ -32,6 +32,8 @@ public class ResponseStatus {
         this.content = content;
     }
 
+
+
     public String getSessionId() {
         return sessionId;
     }

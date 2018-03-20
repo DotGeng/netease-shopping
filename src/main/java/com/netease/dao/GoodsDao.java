@@ -9,4 +9,6 @@ import java.util.List;
  */
 public interface GoodsDao {
     public List<Goods> getAllGoogs();
+    public List<Goods> getGoodsNotSeal();
+    public boolean deleteGoodById(Integer goodsId);
 }

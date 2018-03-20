@@ -24,4 +24,21 @@ public class GoodsDaoImpl implements GoodsDao {
         List<Goods> goods = goodsMapper.selectByExample(example);
         return goods;
     }
+
+    @Override
+    public List<Goods> getGoodsNotSeal() {
+        GoodsExample example = new GoodsExample();
+        GoodsCriteria.getCriteria(example).andHasSealEqualTo(0);
+        List<Goods> goods = goodsMapper.selectByExample(example);
+        return goods;
+    }
+
+    @Override
+    public boolean deleteGoodById(Integer goodsId) {
+        int res = goodsMapper.deleteByPrimaryKey(goodsId);
+        if(res > 0) {
+            return true;
+        }
+        return false;
+    }
 }

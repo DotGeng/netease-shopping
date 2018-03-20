@@ -27,8 +27,8 @@
                     isSubmiting = true;
                     loading.show();
                     ajax({
-                        data: {userName: value1, password: value2},
-                        url: '/post/sessions/create',
+                        data: {salerName: value1, password: value2},
+                        url: '/sessions/saler/index',
                         /*dataType:'json',*/
                         success: function (result) {
                             loading.hide();
@@ -37,7 +37,7 @@
                                 location.href = '/get/index?' + 'userName=' + value1;
                                 sessionStorage.setItem("userName", value1);
                             } else {
-                                location.href = '/get/sessions/saler/news?' + 'salerName' + value1;
+                                location.href = '/get/sessions/saler/index?' + 'salerName=' + value1;
                                 sessionStorage.setItem("salerName", value1)
                             }
 
@@ -49,7 +49,7 @@
                     });
                 }
             }.bind(this), false);
-            [userName, password].forEach(function (item) {
+            [salerName, password].forEach(function (item) {
                 item.addEventListener('input', function (e) {
                     item.classList.remove('z-err');
                 }.bind(this), false);
@@ -58,7 +58,7 @@
         check: function () {
             var result = true;
             [
-                [userName, function (value) {
+                [salerName, function (value) {
                     return value == ''
                 }],
                 [password, function (value) {

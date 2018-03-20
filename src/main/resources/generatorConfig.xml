@@ -37,5 +37,7 @@
         <table tableName="goods" domainObjectName="Goods" ></table>
         <table tableName="seller" domainObjectName="Seller" ></table>
         <table tableName="shopping_cart" domainObjectName="ShoppingCart" ></table>
+        <table tableName="purchase" domainObjectName="Purchase" ></table>
+        <table tableName="booking" domainObjectName="Booking" ></table>
     </context>
 </generatorConfiguration>

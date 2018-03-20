@@ -11,9 +11,13 @@ public class Goods {
 
     private Integer storage;
 
+    private String title;
+
     private Integer soldCount;
 
     private Long sellerId;
+
+    private Integer hasSeal;
 
     public Integer getGoodsId() {
         return goodsId;
@@ -55,6 +59,14 @@ public class Goods {
         this.storage = storage;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title == null ? null : title.trim();
+    }
+
     public Integer getSoldCount() {
         return soldCount;
     }
@@ -69,5 +81,13 @@ public class Goods {
 
     public void setSellerId(Long sellerId) {
         this.sellerId = sellerId;
+    }
+
+    public Integer getHasSeal() {
+        return hasSeal;
+    }
+
+    public void setHasSeal(Integer hasSeal) {
+        this.hasSeal = hasSeal;
     }
 }

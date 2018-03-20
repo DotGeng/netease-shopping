@@ -434,6 +434,76 @@ public class GoodsExample {
             return (Criteria) this;
         }
 
+        public Criteria andTitleIsNull() {
+            addCriterion("title is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleIsNotNull() {
+            addCriterion("title is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleEqualTo(String value) {
+            addCriterion("title =", value, "title");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleNotEqualTo(String value) {
+            addCriterion("title <>", value, "title");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleGreaterThan(String value) {
+            addCriterion("title >", value, "title");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleGreaterThanOrEqualTo(String value) {
+            addCriterion("title >=", value, "title");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleLessThan(String value) {
+            addCriterion("title <", value, "title");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleLessThanOrEqualTo(String value) {
+            addCriterion("title <=", value, "title");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleLike(String value) {
+            addCriterion("title like", value, "title");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleNotLike(String value) {
+            addCriterion("title not like", value, "title");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleIn(List<String> values) {
+            addCriterion("title in", values, "title");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleNotIn(List<String> values) {
+            addCriterion("title not in", values, "title");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleBetween(String value1, String value2) {
+            addCriterion("title between", value1, value2, "title");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleNotBetween(String value1, String value2) {
+            addCriterion("title not between", value1, value2, "title");
+            return (Criteria) this;
+        }
+
         public Criteria andSoldCountIsNull() {
             addCriterion("sold_count is null");
             return (Criteria) this;
@@ -551,6 +621,66 @@ public class GoodsExample {
 
         public Criteria andSellerIdNotBetween(Long value1, Long value2) {
             addCriterion("seller_id not between", value1, value2, "sellerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasSealIsNull() {
+            addCriterion("has_seal is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasSealIsNotNull() {
+            addCriterion("has_seal is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasSealEqualTo(Integer value) {
+            addCriterion("has_seal =", value, "hasSeal");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasSealNotEqualTo(Integer value) {
+            addCriterion("has_seal <>", value, "hasSeal");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasSealGreaterThan(Integer value) {
+            addCriterion("has_seal >", value, "hasSeal");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasSealGreaterThanOrEqualTo(Integer value) {
+            addCriterion("has_seal >=", value, "hasSeal");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasSealLessThan(Integer value) {
+            addCriterion("has_seal <", value, "hasSeal");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasSealLessThanOrEqualTo(Integer value) {
+            addCriterion("has_seal <=", value, "hasSeal");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasSealIn(List<Integer> values) {
+            addCriterion("has_seal in", values, "hasSeal");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasSealNotIn(List<Integer> values) {
+            addCriterion("has_seal not in", values, "hasSeal");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasSealBetween(Integer value1, Integer value2) {
+            addCriterion("has_seal between", value1, value2, "hasSeal");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasSealNotBetween(Integer value1, Integer value2) {
+            addCriterion("has_seal not between", value1, value2, "hasSeal");
             return (Criteria) this;
         }
     }

@@ -14,10 +14,20 @@ public class GreetingController extends BaseController{
         return "/index";
     }
 
-    // 获取登录页面
+    // 买家获取登录页面
     @RequestMapping("/get/sessions/new")
     public String hello() {
         return "/login";
+    }
+    // 卖家获取登录页面
+    @RequestMapping("/get/sessions/saler/news")
+    public String salerLongin() {
+        return "/salerlogin";
+    }
+
+    @RequestMapping("/get/sessions/saler/index")
+    public String salerIndex() {
+        return "/salerIndex";
     }
 
     // 获取显商品浏览页面

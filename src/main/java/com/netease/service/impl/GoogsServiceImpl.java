@@ -15,8 +15,19 @@ import java.util.List;
 public class GoogsServiceImpl implements GoodsService {
     @Autowired
     private GoodsDao goodsDao;
+
     @Override
     public List<Goods> getAllGoods() {
         return goodsDao.getAllGoogs();
+    }
+
+    @Override
+    public List<Goods> getGoodsNotSeal() {
+        return goodsDao.getGoodsNotSeal();
+    }
+
+    @Override
+    public boolean deleteGoodsById(Integer goodsId) {
+        return goodsDao.deleteGoodById(goodsId);
     }
 }
