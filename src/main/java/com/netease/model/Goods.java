@@ -19,6 +19,10 @@ public class Goods {
 
     private Integer hasSeal;
 
+    private String content;
+
+    private String goodsAbstract;
+
     public Integer getGoodsId() {
         return goodsId;
     }
@@ -89,5 +93,21 @@ public class Goods {
 
     public void setHasSeal(Integer hasSeal) {
         this.hasSeal = hasSeal;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content == null ? null : content.trim();
+    }
+
+    public String getGoodsAbstract() {
+        return goodsAbstract;
+    }
+
+    public void setGoodsAbstract(String goodsAbstract) {
+        this.goodsAbstract = goodsAbstract == null ? null : goodsAbstract.trim();
     }
 }

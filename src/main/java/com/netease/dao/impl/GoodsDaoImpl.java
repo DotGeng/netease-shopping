@@ -41,4 +41,10 @@ public class GoodsDaoImpl implements GoodsDao {
         }
         return false;
     }
+
+    @Override
+    public Goods getGoodsById(Integer goodsId) {
+        Goods goods = goodsMapper.selectByPrimaryKey(goodsId);
+        return goods;
+    }
 }

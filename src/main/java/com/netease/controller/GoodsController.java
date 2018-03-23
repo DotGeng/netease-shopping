@@ -42,4 +42,12 @@ public class GoodsController extends BaseController {
         }
         return error("error","","");
     }
+    @RequestMapping(value = "/goods/detail", method = RequestMethod.POST)
+    public ResponseStatus getGoodsByGoodsId(GoodsInfo goodsInfo) {
+        if(goodsInfo == null && goodsInfo.getGoodsId() == null) {
+            return error("fail","","");
+        }
+        Goods goods = goodsService.getGoodsById(goodsInfo.getGoodsId());
+        return success("ok","",goods);
+    }
 }

@@ -3,8 +3,9 @@
 <mapper namespace="com.netease.mapper.BookingMapper" >
   <resultMap id="BaseResultMap" type="com.netease.model.Booking" >
     <id column="booking_id" property="bookingId" jdbcType="BIGINT" />
-    <result column="goods_id" property="goodsId" jdbcType="BIGINT" />
+    <result column="goods_id" property="goodsId" jdbcType="INTEGER" />
     <result column="goods_num" property="goodsNum" jdbcType="INTEGER" />
+    <result column="buyed_price" property="buyedPrice" jdbcType="DOUBLE" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -65,7 +66,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    booking_id, goods_id, goods_num
+    booking_id, goods_id, goods_num, buyed_price
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.netease.model.BookingExample" >
     select
@@ -98,10 +99,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.netease.model.Booking" >
-    insert into booking (booking_id, goods_id, goods_num
-      )
-    values (#{bookingId,jdbcType=BIGINT}, #{goodsId,jdbcType=BIGINT}, #{goodsNum,jdbcType=INTEGER}
-      )
+    insert into booking (booking_id, goods_id, goods_num, 
+      buyed_price)
+    values (#{bookingId,jdbcType=BIGINT}, #{goodsId,jdbcType=INTEGER}, #{goodsNum,jdbcType=INTEGER}, 
+      #{buyedPrice,jdbcType=DOUBLE})
   </insert>
   <insert id="insertSelective" parameterType="com.netease.model.Booking" >
     insert into booking
@@ -115,16 +116,22 @@
       <if test="goodsNum != null" >
         goods_num,
       </if>
+      <if test="buyedPrice != null" >
+        buyed_price,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="bookingId != null" >
         #{bookingId,jdbcType=BIGINT},
       </if>
       <if test="goodsId != null" >
-        #{goodsId,jdbcType=BIGINT},
+        #{goodsId,jdbcType=INTEGER},
       </if>
       <if test="goodsNum != null" >
         #{goodsNum,jdbcType=INTEGER},
+      </if>
+      <if test="buyedPrice != null" >
+        #{buyedPrice,jdbcType=DOUBLE},
       </if>
     </trim>
   </insert>
@@ -141,10 +148,13 @@
         booking_id = #{record.bookingId,jdbcType=BIGINT},
       </if>
       <if test="record.goodsId != null" >
-        goods_id = #{record.goodsId,jdbcType=BIGINT},
+        goods_id = #{record.goodsId,jdbcType=INTEGER},
       </if>
       <if test="record.goodsNum != null" >
         goods_num = #{record.goodsNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.buyedPrice != null" >
+        buyed_price = #{record.buyedPrice,jdbcType=DOUBLE},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -154,8 +164,9 @@
   <update id="updateByExample" parameterType="map" >
     update booking
     set booking_id = #{record.bookingId,jdbcType=BIGINT},
-      goods_id = #{record.goodsId,jdbcType=BIGINT},
-      goods_num = #{record.goodsNum,jdbcType=INTEGER}
+      goods_id = #{record.goodsId,jdbcType=INTEGER},
+      goods_num = #{record.goodsNum,jdbcType=INTEGER},
+      buyed_price = #{record.buyedPrice,jdbcType=DOUBLE}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -164,18 +175,22 @@
     update booking
     <set >
       <if test="goodsId != null" >
-        goods_id = #{goodsId,jdbcType=BIGINT},
+        goods_id = #{goodsId,jdbcType=INTEGER},
       </if>
       <if test="goodsNum != null" >
         goods_num = #{goodsNum,jdbcType=INTEGER},
+      </if>
+      <if test="buyedPrice != null" >
+        buyed_price = #{buyedPrice,jdbcType=DOUBLE},
       </if>
     </set>
     where booking_id = #{bookingId,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.netease.model.Booking" >
     update booking
-    set goods_id = #{goodsId,jdbcType=BIGINT},
-      goods_num = #{goodsNum,jdbcType=INTEGER}
+    set goods_id = #{goodsId,jdbcType=INTEGER},
+      goods_num = #{goodsNum,jdbcType=INTEGER},
+      buyed_price = #{buyedPrice,jdbcType=DOUBLE}
     where booking_id = #{bookingId,jdbcType=BIGINT}
   </update>
 </mapper>

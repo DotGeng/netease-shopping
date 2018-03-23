@@ -5,7 +5,10 @@
     }
     var layer = new Layer();
     var loading = new Loading();
+    // 给全部产品a标签指定点击事件
+
     var page = {
+
         init: function () {
             plist.addEventListener('click', function (e) {
                 var ele = e.target;
@@ -42,6 +45,10 @@
     };
 
     var userName = sessionStorage.getItem('userName');
+    jQuery.hrefgoodsdetail = function(goodsId) {
+        sessionStorage.setItem("goodsId",goodsId);
+        window.location.replace("/goods/page/detail?userName=" + sessionStorage.getItem("userName"));
+    };
     var getResult = function(){
         $.ajax({
             type: "get",
@@ -59,7 +66,7 @@
                 $("#plist").append('<ul class="f-cb" id="plist">');
                 for (var i = 0; i < n; i++) {
                     var temp = '<li id="p-" + i + ">' +
-                        '<a href="./show.html" class="link">' +
+                        '<a id="showDetails" href="javascript:void(0);" onclick="jQuery.hrefgoodsdetail('+listResult[i].goodsId+')" class="link">' +
                         '<div class="img"><img src= "'+ listResult[i].pictureUrl +'"  alt=""></div>' +
                         '<h3>内容</h3>' +
                         '<div class="price"><span class="v-unit">¥</span><span class="v-value">'+listResult[i].goodsPrice+'</span></div>';
@@ -107,8 +114,9 @@
                 $("#plist").append('<ul class="f-cb" id="plist">');
                 for (var i = 0; i < n; i++) {
                     $("#plist").append('' +
-                        '<li id="p-" + i + ">' +
-                        '<a id="showDetail" class="link">' +
+                        '<li id="p-" + i + ">'+
+                        '<input style="display:none" value="'+ listResult[i].goodsId +'"/>' +
+                        '<a href="javascript:void(0);" onclick="" class="link">' +
                         '<div class="img"><img src= "'+ listResult[i].pictureUrl +'"  alt=""></div>' +
                         '<h3>内容</h3>' +
                         '<div class="price"><span class="v-unit">¥</span><span class="v-value">'+listResult[i].goodsPrice+'</span></div>' +
@@ -117,21 +125,18 @@
                 $("#plist").append('</ul>');
                 document.getElementById("selector_1").className="";
                 document.getElementById("selector_2").className="z-sel";
-                /*var my_class_name = document.getElementById("selector_1").className;
-                document.getElementById("selector_1").className  = document.getElementById("selector_2").className;
-                document.getElementById("selector_2").className = my_class_name;*/
             }
         });
     });
     // 给某一个商品信息添加ajax事件
-    $("#showDetail").click(
+    var goodsLinks = $(".link");
+    for (var i = 0; i < goodsLinks.length; i ++) {
+        $("#showDetails").click(
+            goodsLinks[i]
+        );
+    }
 
-        
-    );
-    // 给全部产品a标签指定点击事件
-    $("#allGoods").click(function() {
-        getResult();
-    });
+
     getResult();
     page.init();
 })(window, document);

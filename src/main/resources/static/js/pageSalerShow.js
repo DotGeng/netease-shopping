@@ -8,16 +8,16 @@
     var page = {
         init: function () {
             var goodsId = sessionStorage.getItem("goodsId");
-            var userName = sessionStorage.getItem("userName");
+            var salerName = sessionStorage.getItem("salerName");
             $.ajax({
                 data: {goodsId: goodsId},
-                url: '/goods/detail?userName=' + userName,
+                url: '/goods/detail?salerName=' + salerName,
                 type: "post",
                 dataType: "json",
                 async: true,
                 success: function (result) {
                     var goods = result.content;
-                    util.get('userName').innerHTML = userName;
+                    util.get('salerName').innerHTML = salerName;
                     $("#login").hide();
                     var hasSealClass = "u-btn u-btn-primary";
                     var price = goods.goodsPrice;
@@ -40,9 +40,7 @@
                         '<span class="v-unit">¥</span><span class="v-value">' + price + '</span>' +
                         '</div>' +
                         '<div class="oprt f-cb">' +
-                        '<button id="buyButton" class="' + hasSealClass + '" data-buy="1" style="' + buyButton + '">购 买</button>' +
-                            '<span class="u-btn u-btn-primary z-dis" style="' + hasBuyedPrice + '">购买</span>'+
-                        '<span class="buyprice" style="' + hasBuyedPrice + '">当时购买价格：¥123.9</span>' +
+                        '<a href="./edit.html" class="u-btn u-btn-primary">编 辑</a>' +
                         '</div>' +
                         '</div>';
                     $("#showContent").empty();

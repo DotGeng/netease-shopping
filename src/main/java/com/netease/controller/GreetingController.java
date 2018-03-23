@@ -35,7 +35,15 @@ public class GreetingController extends BaseController{
     public String index() {
         return "/index";
     }
-
-
+    // 买家获取商品详细页
+    @RequestMapping("/goods/page/detail")
+    public String showGoodsDetailForUser() {
+        return "/show";
+    }
+    // 卖家获获取商品详细信息
+    @RequestMapping("/static/show/saler")
+    public String showGoodInfoForSaler() {
+        return "/salershow";
+    }
 
 }

@@ -11,6 +11,8 @@
     <result column="sold_count" property="soldCount" jdbcType="INTEGER" />
     <result column="seller_id" property="sellerId" jdbcType="BIGINT" />
     <result column="has_seal" property="hasSeal" jdbcType="INTEGER" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="goods_abstract" property="goodsAbstract" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -72,7 +74,7 @@
   </sql>
   <sql id="Base_Column_List" >
     goods_id, goods_name, goods_price, picture_url, storage, title, sold_count, seller_id, 
-    has_seal
+    has_seal, content, goods_abstract
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.netease.model.GoodsExample" >
     select
@@ -107,12 +109,12 @@
   <insert id="insert" parameterType="com.netease.model.Goods" >
     insert into goods (goods_id, goods_name, goods_price, 
       picture_url, storage, title, 
-      sold_count, seller_id, has_seal
-      )
+      sold_count, seller_id, has_seal, 
+      content, goods_abstract)
     values (#{goodsId,jdbcType=INTEGER}, #{goodsName,jdbcType=VARCHAR}, #{goodsPrice,jdbcType=VARCHAR}, 
       #{pictureUrl,jdbcType=VARCHAR}, #{storage,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, 
-      #{soldCount,jdbcType=INTEGER}, #{sellerId,jdbcType=BIGINT}, #{hasSeal,jdbcType=INTEGER}
-      )
+      #{soldCount,jdbcType=INTEGER}, #{sellerId,jdbcType=BIGINT}, #{hasSeal,jdbcType=INTEGER}, 
+      #{content,jdbcType=VARCHAR}, #{goodsAbstract,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.netease.model.Goods" >
     insert into goods
@@ -144,6 +146,12 @@
       <if test="hasSeal != null" >
         has_seal,
       </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="goodsAbstract != null" >
+        goods_abstract,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="goodsId != null" >
@@ -172,6 +180,12 @@
       </if>
       <if test="hasSeal != null" >
         #{hasSeal,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsAbstract != null" >
+        #{goodsAbstract,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -211,6 +225,12 @@
       <if test="record.hasSeal != null" >
         has_seal = #{record.hasSeal,jdbcType=INTEGER},
       </if>
+      <if test="record.content != null" >
+        content = #{record.content,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodsAbstract != null" >
+        goods_abstract = #{record.goodsAbstract,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -226,7 +246,9 @@
       title = #{record.title,jdbcType=VARCHAR},
       sold_count = #{record.soldCount,jdbcType=INTEGER},
       seller_id = #{record.sellerId,jdbcType=BIGINT},
-      has_seal = #{record.hasSeal,jdbcType=INTEGER}
+      has_seal = #{record.hasSeal,jdbcType=INTEGER},
+      content = #{record.content,jdbcType=VARCHAR},
+      goods_abstract = #{record.goodsAbstract,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -258,6 +280,12 @@
       <if test="hasSeal != null" >
         has_seal = #{hasSeal,jdbcType=INTEGER},
       </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsAbstract != null" >
+        goods_abstract = #{goodsAbstract,jdbcType=VARCHAR},
+      </if>
     </set>
     where goods_id = #{goodsId,jdbcType=INTEGER}
   </update>
@@ -270,7 +298,9 @@
       title = #{title,jdbcType=VARCHAR},
       sold_count = #{soldCount,jdbcType=INTEGER},
       seller_id = #{sellerId,jdbcType=BIGINT},
-      has_seal = #{hasSeal,jdbcType=INTEGER}
+      has_seal = #{hasSeal,jdbcType=INTEGER},
+      content = #{content,jdbcType=VARCHAR},
+      goods_abstract = #{goodsAbstract,jdbcType=VARCHAR}
     where goods_id = #{goodsId,jdbcType=INTEGER}
   </update>
 </mapper>

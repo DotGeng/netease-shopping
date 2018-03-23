@@ -174,52 +174,52 @@ public class BookingExample {
             return (Criteria) this;
         }
 
-        public Criteria andGoodsIdEqualTo(Long value) {
+        public Criteria andGoodsIdEqualTo(Integer value) {
             addCriterion("goods_id =", value, "goodsId");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsIdNotEqualTo(Long value) {
+        public Criteria andGoodsIdNotEqualTo(Integer value) {
             addCriterion("goods_id <>", value, "goodsId");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsIdGreaterThan(Long value) {
+        public Criteria andGoodsIdGreaterThan(Integer value) {
             addCriterion("goods_id >", value, "goodsId");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsIdGreaterThanOrEqualTo(Long value) {
+        public Criteria andGoodsIdGreaterThanOrEqualTo(Integer value) {
             addCriterion("goods_id >=", value, "goodsId");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsIdLessThan(Long value) {
+        public Criteria andGoodsIdLessThan(Integer value) {
             addCriterion("goods_id <", value, "goodsId");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsIdLessThanOrEqualTo(Long value) {
+        public Criteria andGoodsIdLessThanOrEqualTo(Integer value) {
             addCriterion("goods_id <=", value, "goodsId");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsIdIn(List<Long> values) {
+        public Criteria andGoodsIdIn(List<Integer> values) {
             addCriterion("goods_id in", values, "goodsId");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsIdNotIn(List<Long> values) {
+        public Criteria andGoodsIdNotIn(List<Integer> values) {
             addCriterion("goods_id not in", values, "goodsId");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsIdBetween(Long value1, Long value2) {
+        public Criteria andGoodsIdBetween(Integer value1, Integer value2) {
             addCriterion("goods_id between", value1, value2, "goodsId");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsIdNotBetween(Long value1, Long value2) {
+        public Criteria andGoodsIdNotBetween(Integer value1, Integer value2) {
             addCriterion("goods_id not between", value1, value2, "goodsId");
             return (Criteria) this;
         }
@@ -281,6 +281,66 @@ public class BookingExample {
 
         public Criteria andGoodsNumNotBetween(Integer value1, Integer value2) {
             addCriterion("goods_num not between", value1, value2, "goodsNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andBuyedPriceIsNull() {
+            addCriterion("buyed_price is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBuyedPriceIsNotNull() {
+            addCriterion("buyed_price is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBuyedPriceEqualTo(Double value) {
+            addCriterion("buyed_price =", value, "buyedPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andBuyedPriceNotEqualTo(Double value) {
+            addCriterion("buyed_price <>", value, "buyedPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andBuyedPriceGreaterThan(Double value) {
+            addCriterion("buyed_price >", value, "buyedPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andBuyedPriceGreaterThanOrEqualTo(Double value) {
+            addCriterion("buyed_price >=", value, "buyedPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andBuyedPriceLessThan(Double value) {
+            addCriterion("buyed_price <", value, "buyedPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andBuyedPriceLessThanOrEqualTo(Double value) {
+            addCriterion("buyed_price <=", value, "buyedPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andBuyedPriceIn(List<Double> values) {
+            addCriterion("buyed_price in", values, "buyedPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andBuyedPriceNotIn(List<Double> values) {
+            addCriterion("buyed_price not in", values, "buyedPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andBuyedPriceBetween(Double value1, Double value2) {
+            addCriterion("buyed_price between", value1, value2, "buyedPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andBuyedPriceNotBetween(Double value1, Double value2) {
+            addCriterion("buyed_price not between", value1, value2, "buyedPrice");
             return (Criteria) this;
         }
     }
