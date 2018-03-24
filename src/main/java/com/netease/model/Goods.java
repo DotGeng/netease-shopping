@@ -5,7 +5,7 @@ public class Goods {
 
     private String goodsName;
 
-    private String goodsPrice;
+    private Double goodsPrice;
 
     private String pictureUrl;
 
@@ -39,12 +39,12 @@ public class Goods {
         this.goodsName = goodsName == null ? null : goodsName.trim();
     }
 
-    public String getGoodsPrice() {
+    public Double getGoodsPrice() {
         return goodsPrice;
     }
 
-    public void setGoodsPrice(String goodsPrice) {
-        this.goodsPrice = goodsPrice == null ? null : goodsPrice.trim();
+    public void setGoodsPrice(Double goodsPrice) {
+        this.goodsPrice = goodsPrice;
     }
 
     public String getPictureUrl() {

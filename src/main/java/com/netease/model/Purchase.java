@@ -3,7 +3,7 @@ package com.netease.model;
 public class Purchase {
     private Long purchasedId;
 
-    private Long goodsId;
+    private Integer goodsId;
 
     private Integer goodsNum;
 
@@ -15,11 +15,11 @@ public class Purchase {
         this.purchasedId = purchasedId;
     }
 
-    public Long getGoodsId() {
+    public Integer getGoodsId() {
         return goodsId;
     }
 
-    public void setGoodsId(Long goodsId) {
+    public void setGoodsId(Integer goodsId) {
         this.goodsId = goodsId;
     }
 

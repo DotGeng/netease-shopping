@@ -12,4 +12,5 @@ public interface GoodsService {
     public List<Goods> getGoodsNotSeal();
     public boolean deleteGoodsById(Integer goodsId);
     public Goods getGoodsById(Integer goodsId);
+    public void buyGoodsById(Integer goodsId, Integer goodsCount);
 }

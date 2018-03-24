@@ -45,11 +45,11 @@ public class LoginInteceptor implements HandlerInterceptor {
         String userName = request.getParameter("userName");
         String salerName = request.getParameter("salerName");
         String URL = request.getRequestURI();
-        if (request.getParameter("userName") != null) {
+        if (userName != null) {
             // 买家登录的过滤器
             return buyerLoginInteceptor(request, response, handler);
         }
-        if (request.getParameter("salerName") != null) {
+        if (salerName != null) {
             // 卖家过滤器
             return salerLogIntecptor(request, response, handler);
         } else {

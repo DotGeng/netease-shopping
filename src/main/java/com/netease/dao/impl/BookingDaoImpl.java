@@ -8,7 +8,6 @@ import com.netease.model.BookingExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.validation.constraints.Max;
 import java.util.List;
 
 /**

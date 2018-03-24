@@ -19,23 +19,6 @@
                 }
             }.bind(this), false);
         },
-        ondel: function (id) {
-            layer.reset({
-                content: '确定要删除该内容吗？',
-                onconfirm: function () {
-                    layer.hide();
-                    loading.show();
-                    ajax({
-                        url: '/api/delete',
-                        data: {id: id},
-                        success: function (json) {
-                            this.delItemNode(id);
-                            loading.result('删除成功');
-                        }.bind(this)
-                    });
-                }.bind(this)
-            }).show();
-        },
         delItemNode: function (id) {
             var item = util.get('p-' + id);
             if (item && item.parentNode) {
@@ -47,7 +30,7 @@
     var userName = sessionStorage.getItem('userName');
     jQuery.hrefgoodsdetail = function(goodsId) {
         sessionStorage.setItem("goodsId",goodsId);
-        window.location.replace("/goods/page/detail?userName=" + sessionStorage.getItem("userName"));
+
     };
     var getResult = function(){
         $.ajax({
@@ -66,7 +49,7 @@
                 $("#plist").append('<ul class="f-cb" id="plist">');
                 for (var i = 0; i < n; i++) {
                     var temp = '<li id="p-" + i + ">' +
-                        '<a id="showDetails" href="javascript:void(0);" onclick="jQuery.hrefgoodsdetail('+listResult[i].goodsId+')" class="link">' +
+                        '<a id="showDetails" href="/goods/page/detail?userName='+ sessionStorage.getItem("userName") +'" onclick="jQuery.hrefgoodsdetail('+listResult[i].goodsId+')" class="link">' +
                         '<div class="img"><img src= "'+ listResult[i].pictureUrl +'"  alt=""></div>' +
                         '<h3>内容</h3>' +
                         '<div class="price"><span class="v-unit">¥</span><span class="v-value">'+listResult[i].goodsPrice+'</span></div>';

@@ -6,7 +6,15 @@ package com.netease.recventry;
 public class GoodsInfo {
     private Integer goodsId;
     private String goodsName;
+    private Integer count;
 
+    public Integer getCount() {
+        return count;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
+    }
 
     public Integer getGoodsId() {
         return goodsId;

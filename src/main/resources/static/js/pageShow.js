@@ -29,10 +29,8 @@
                         hasBuyedPrice = "";
                         buyButton = "display:none";
                         $("#buyButton").unbind("click");
-
                     }
-
-                    var tmp = '<div class="img"><img src="http://nec.netease.com/img/l/1.jpg" alt=""></div>' +
+                    var tmp = '<div class="img"><img src="' + goods.pictureUrl + '" alt=""></div>' +
                         '<div class="cnt">' +
                         '<h2>' + goods.goodsName + '</h2>' +
                         '<p class="summary">' + goods.goodsAbstract + '</p>' +
@@ -41,8 +39,8 @@
                         '</div>' +
                         '<div class="oprt f-cb">' +
                         '<button id="buyButton" class="' + hasSealClass + '" data-buy="1" style="' + buyButton + '">购 买</button>' +
-                            '<span class="u-btn u-btn-primary z-dis" style="' + hasBuyedPrice + '">购买</span>'+
-                        '<span class="buyprice" style="' + hasBuyedPrice + '">当时购买价格：¥123.9</span>' +
+                        '<span class="u-btn u-btn-primary z-dis" style="' + hasBuyedPrice + '">购买</span>' +
+                        '<span class="buyprice" style="' + hasBuyedPrice + '">当时购买价格：¥' + price + '</span>' +
                         '</div>' +
                         '</div>';
                     $("#showContent").empty();
@@ -61,14 +59,17 @@
                     layer.reset({
                         content: '确认购买本内容吗？',
                         onconfirm: function () {
+                            var count = prompt('请输入购买数量：');
+                            var goodsId = sessionStorage.getItem("goodsId");
+                            var userName = sessionStorage.getItem("userName");
                             layer.hide();
                             loading.show();
                             ajax({
-                                data: {id: buy},
-                                url: '/api/buy',
+                                data: {goodsId: goodsId,count: count},
+                                url: '/goods/buying?userName=' + userName,
                                 success: function (result) {
                                     loading.result('购买成功', function () {
-                                        location.href = './account.html';
+                                        location.href = '/static/show/account';
                                     });
                                 },
                                 error: function (message) {

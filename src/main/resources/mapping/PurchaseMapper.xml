@@ -3,7 +3,7 @@
 <mapper namespace="com.netease.mapper.PurchaseMapper" >
   <resultMap id="BaseResultMap" type="com.netease.model.Purchase" >
     <id column="purchased_id" property="purchasedId" jdbcType="BIGINT" />
-    <result column="goods_id" property="goodsId" jdbcType="BIGINT" />
+    <result column="goods_id" property="goodsId" jdbcType="INTEGER" />
     <result column="goods_num" property="goodsNum" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -100,7 +100,7 @@
   <insert id="insert" parameterType="com.netease.model.Purchase" >
     insert into purchase (purchased_id, goods_id, goods_num
       )
-    values (#{purchasedId,jdbcType=BIGINT}, #{goodsId,jdbcType=BIGINT}, #{goodsNum,jdbcType=INTEGER}
+    values (#{purchasedId,jdbcType=BIGINT}, #{goodsId,jdbcType=INTEGER}, #{goodsNum,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.netease.model.Purchase" >
@@ -121,7 +121,7 @@
         #{purchasedId,jdbcType=BIGINT},
       </if>
       <if test="goodsId != null" >
-        #{goodsId,jdbcType=BIGINT},
+        #{goodsId,jdbcType=INTEGER},
       </if>
       <if test="goodsNum != null" >
         #{goodsNum,jdbcType=INTEGER},
@@ -141,7 +141,7 @@
         purchased_id = #{record.purchasedId,jdbcType=BIGINT},
       </if>
       <if test="record.goodsId != null" >
-        goods_id = #{record.goodsId,jdbcType=BIGINT},
+        goods_id = #{record.goodsId,jdbcType=INTEGER},
       </if>
       <if test="record.goodsNum != null" >
         goods_num = #{record.goodsNum,jdbcType=INTEGER},
@@ -154,7 +154,7 @@
   <update id="updateByExample" parameterType="map" >
     update purchase
     set purchased_id = #{record.purchasedId,jdbcType=BIGINT},
-      goods_id = #{record.goodsId,jdbcType=BIGINT},
+      goods_id = #{record.goodsId,jdbcType=INTEGER},
       goods_num = #{record.goodsNum,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -164,7 +164,7 @@
     update purchase
     <set >
       <if test="goodsId != null" >
-        goods_id = #{goodsId,jdbcType=BIGINT},
+        goods_id = #{goodsId,jdbcType=INTEGER},
       </if>
       <if test="goodsNum != null" >
         goods_num = #{goodsNum,jdbcType=INTEGER},
@@ -174,7 +174,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.netease.model.Purchase" >
     update purchase
-    set goods_id = #{goodsId,jdbcType=BIGINT},
+    set goods_id = #{goodsId,jdbcType=INTEGER},
       goods_num = #{goodsNum,jdbcType=INTEGER}
     where purchased_id = #{purchasedId,jdbcType=BIGINT}
   </update>

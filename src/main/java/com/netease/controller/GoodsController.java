@@ -31,23 +31,33 @@ public class GoodsController extends BaseController {
         List<Goods> goods = goodsService.getAllGoods();
         return success("ok", userInfo.getUserName(), goods);
     }
+
     @RequestMapping(value = "/saler/goods/delete", method = RequestMethod.POST)
     public ResponseStatus deleteGoodsByGoodsId(GoodsInfo goodsInfo) {
         Integer goodsId = goodsInfo.getGoodsId();
-        if(goodsId == null) {
-            return error("error","","");
+        if (goodsId == null) {
+            return error("error", "", "");
         }
-        if(goodsService.deleteGoodsById(goodsId)) {
-            return success("ok","");
+        if (goodsService.deleteGoodsById(goodsId)) {
+            return success("ok", "");
         }
-        return error("error","","");
+        return error("error", "", "");
     }
+
     @RequestMapping(value = "/goods/detail", method = RequestMethod.POST)
     public ResponseStatus getGoodsByGoodsId(GoodsInfo goodsInfo) {
-        if(goodsInfo == null && goodsInfo.getGoodsId() == null) {
-            return error("fail","","");
+        if (goodsInfo == null && goodsInfo.getGoodsId() == null) {
+            return error("fail", "", "");
         }
         Goods goods = goodsService.getGoodsById(goodsInfo.getGoodsId());
-        return success("ok","",goods);
+        return success("ok", "", goods);
+    }
+
+    @RequestMapping(value = "/goods/buying", method = RequestMethod.POST)
+    public ResponseStatus buyGoods(GoodsInfo goodsInfo) {
+        Integer goodsId = goodsInfo.getGoodsId();
+        Integer goodsCount = goodsInfo.getCount();
+        goodsService.buyGoodsById(goodsId, goodsCount);
+        return success("ok", "");
     }
 }

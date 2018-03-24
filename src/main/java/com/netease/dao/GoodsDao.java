@@ -12,4 +12,5 @@ public interface GoodsDao {
     public List<Goods> getGoodsNotSeal();
     public boolean deleteGoodById(Integer goodsId);
     public Goods getGoodsById(Integer goodsId);
+    public void updateGoodsById(Goods goods);
 }

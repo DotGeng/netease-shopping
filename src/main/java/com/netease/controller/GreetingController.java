@@ -45,5 +45,9 @@ public class GreetingController extends BaseController{
     public String showGoodInfoForSaler() {
         return "/salershow";
     }
+    @RequestMapping("/static/show/account")
+    public String showAccountDetail() {
+        return "/account";
+    }
 
 }

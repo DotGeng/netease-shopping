@@ -7,4 +7,5 @@ import com.netease.model.Booking;
  */
 public interface BookingDao {
     public Booking getBookingByGoodsId(Integer goodsId);
+
 }

@@ -47,7 +47,6 @@
     };
     jQuery.hrefgoodsdetailForSaler = function(goodsId) {
         sessionStorage.setItem("goodsId",goodsId);
-        window.location.replace("/goods/page/detail?salerName=" + sessionStorage.getItem("salerName"));
     };
     var salerName = sessionStorage.getItem('salerName');
     var getResult = function () {
@@ -68,7 +67,7 @@
                     var soldCount = listResult[i].soldCount;
                     var tmp =  '<li id="p-' + i + '">' +
                         '<input style="display:none" value="'+ listResult[i].goodsId +'"/>' +
-                        '<a href="/static/show/saler" class="link">' +
+                        '<a href="/static/show/saler" onclick="jQuery.hrefgoodsdetailForSaler('+listResult[i].goodsId+')" class="link">' +
                         '<div class="img"><img src= "' + listResult[i].pictureUrl + '"  alt=""></div>' +
                         '<h3>' + '已卖出' + soldCount + '件' + '</h3>' +
                         '<div class="price"><span class="v-unit">¥</span><span class="v-value">' + listResult[i].goodsPrice + '</span></div>' +

@@ -32,7 +32,7 @@
 
                     }
 
-                    var tmp = '<div class="img"><img src="http://nec.netease.com/img/l/1.jpg" alt=""></div>' +
+                    var tmp = '<div class="img"><img src="' + goods.pictureUrl + '" alt=""></div>' +
                         '<div class="cnt">' +
                         '<h2>' + goods.goodsName + '</h2>' +
                         '<p class="summary">' + goods.goodsAbstract + '</p>' +

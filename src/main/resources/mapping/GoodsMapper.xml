@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.netease.model.Goods" >
     <id column="goods_id" property="goodsId" jdbcType="INTEGER" />
     <result column="goods_name" property="goodsName" jdbcType="VARCHAR" />
-    <result column="goods_price" property="goodsPrice" jdbcType="VARCHAR" />
+    <result column="goods_price" property="goodsPrice" jdbcType="DOUBLE" />
     <result column="picture_url" property="pictureUrl" jdbcType="VARCHAR" />
     <result column="storage" property="storage" jdbcType="INTEGER" />
     <result column="title" property="title" jdbcType="VARCHAR" />
@@ -111,7 +111,7 @@
       picture_url, storage, title, 
       sold_count, seller_id, has_seal, 
       content, goods_abstract)
-    values (#{goodsId,jdbcType=INTEGER}, #{goodsName,jdbcType=VARCHAR}, #{goodsPrice,jdbcType=VARCHAR}, 
+    values (#{goodsId,jdbcType=INTEGER}, #{goodsName,jdbcType=VARCHAR}, #{goodsPrice,jdbcType=DOUBLE}, 
       #{pictureUrl,jdbcType=VARCHAR}, #{storage,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, 
       #{soldCount,jdbcType=INTEGER}, #{sellerId,jdbcType=BIGINT}, #{hasSeal,jdbcType=INTEGER}, 
       #{content,jdbcType=VARCHAR}, #{goodsAbstract,jdbcType=VARCHAR})
@@ -161,7 +161,7 @@
         #{goodsName,jdbcType=VARCHAR},
       </if>
       <if test="goodsPrice != null" >
-        #{goodsPrice,jdbcType=VARCHAR},
+        #{goodsPrice,jdbcType=DOUBLE},
       </if>
       <if test="pictureUrl != null" >
         #{pictureUrl,jdbcType=VARCHAR},
@@ -205,7 +205,7 @@
         goods_name = #{record.goodsName,jdbcType=VARCHAR},
       </if>
       <if test="record.goodsPrice != null" >
-        goods_price = #{record.goodsPrice,jdbcType=VARCHAR},
+        goods_price = #{record.goodsPrice,jdbcType=DOUBLE},
       </if>
       <if test="record.pictureUrl != null" >
         picture_url = #{record.pictureUrl,jdbcType=VARCHAR},
@@ -240,7 +240,7 @@
     update goods
     set goods_id = #{record.goodsId,jdbcType=INTEGER},
       goods_name = #{record.goodsName,jdbcType=VARCHAR},
-      goods_price = #{record.goodsPrice,jdbcType=VARCHAR},
+      goods_price = #{record.goodsPrice,jdbcType=DOUBLE},
       picture_url = #{record.pictureUrl,jdbcType=VARCHAR},
       storage = #{record.storage,jdbcType=INTEGER},
       title = #{record.title,jdbcType=VARCHAR},
@@ -260,7 +260,7 @@
         goods_name = #{goodsName,jdbcType=VARCHAR},
       </if>
       <if test="goodsPrice != null" >
-        goods_price = #{goodsPrice,jdbcType=VARCHAR},
+        goods_price = #{goodsPrice,jdbcType=DOUBLE},
       </if>
       <if test="pictureUrl != null" >
         picture_url = #{pictureUrl,jdbcType=VARCHAR},
@@ -292,7 +292,7 @@
   <update id="updateByPrimaryKey" parameterType="com.netease.model.Goods" >
     update goods
     set goods_name = #{goodsName,jdbcType=VARCHAR},
-      goods_price = #{goodsPrice,jdbcType=VARCHAR},
+      goods_price = #{goodsPrice,jdbcType=DOUBLE},
       picture_url = #{pictureUrl,jdbcType=VARCHAR},
       storage = #{storage,jdbcType=INTEGER},
       title = #{title,jdbcType=VARCHAR},

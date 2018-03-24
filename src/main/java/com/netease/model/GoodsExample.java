@@ -244,62 +244,52 @@ public class GoodsExample {
             return (Criteria) this;
         }
 
-        public Criteria andGoodsPriceEqualTo(String value) {
+        public Criteria andGoodsPriceEqualTo(Double value) {
             addCriterion("goods_price =", value, "goodsPrice");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsPriceNotEqualTo(String value) {
+        public Criteria andGoodsPriceNotEqualTo(Double value) {
             addCriterion("goods_price <>", value, "goodsPrice");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsPriceGreaterThan(String value) {
+        public Criteria andGoodsPriceGreaterThan(Double value) {
             addCriterion("goods_price >", value, "goodsPrice");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsPriceGreaterThanOrEqualTo(String value) {
+        public Criteria andGoodsPriceGreaterThanOrEqualTo(Double value) {
             addCriterion("goods_price >=", value, "goodsPrice");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsPriceLessThan(String value) {
+        public Criteria andGoodsPriceLessThan(Double value) {
             addCriterion("goods_price <", value, "goodsPrice");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsPriceLessThanOrEqualTo(String value) {
+        public Criteria andGoodsPriceLessThanOrEqualTo(Double value) {
             addCriterion("goods_price <=", value, "goodsPrice");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsPriceLike(String value) {
-            addCriterion("goods_price like", value, "goodsPrice");
-            return (Criteria) this;
-        }
-
-        public Criteria andGoodsPriceNotLike(String value) {
-            addCriterion("goods_price not like", value, "goodsPrice");
-            return (Criteria) this;
-        }
-
-        public Criteria andGoodsPriceIn(List<String> values) {
+        public Criteria andGoodsPriceIn(List<Double> values) {
             addCriterion("goods_price in", values, "goodsPrice");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsPriceNotIn(List<String> values) {
+        public Criteria andGoodsPriceNotIn(List<Double> values) {
             addCriterion("goods_price not in", values, "goodsPrice");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsPriceBetween(String value1, String value2) {
+        public Criteria andGoodsPriceBetween(Double value1, Double value2) {
             addCriterion("goods_price between", value1, value2, "goodsPrice");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsPriceNotBetween(String value1, String value2) {
+        public Criteria andGoodsPriceNotBetween(Double value1, Double value2) {
             addCriterion("goods_price not between", value1, value2, "goodsPrice");
             return (Criteria) this;
         }

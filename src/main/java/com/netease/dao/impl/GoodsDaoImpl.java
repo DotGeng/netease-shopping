@@ -47,4 +47,9 @@ public class GoodsDaoImpl implements GoodsDao {
         Goods goods = goodsMapper.selectByPrimaryKey(goodsId);
         return goods;
     }
+
+    @Override
+    public void updateGoodsById(Goods goods) {
+        goodsMapper.updateByPrimaryKeySelective(goods);
+    }
 }
