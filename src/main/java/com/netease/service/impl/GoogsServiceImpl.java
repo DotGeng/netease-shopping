@@ -81,7 +81,6 @@ public class GoogsServiceImpl implements GoodsService {
     public void  buyGoodsById(Integer goodsId, Integer goodsCount) {
         Goods goods = goodsDao.getGoodsById(goodsId);
         Purchase purchase = new Purchase();
-        goods.setHasSeal(1);
         goods.setSoldCount(goodsCount);
         purchase.setGoodsId(goodsId);
         purchase.setGoodsNum(goodsCount);
