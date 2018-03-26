@@ -1,6 +1,7 @@
 package com.netease.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class BookingExample {
@@ -341,6 +342,136 @@ public class BookingExample {
 
         public Criteria andBuyedPriceNotBetween(Double value1, Double value2) {
             addCriterion("buyed_price not between", value1, value2, "buyedPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchaseTimeIsNull() {
+            addCriterion("purchase_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchaseTimeIsNotNull() {
+            addCriterion("purchase_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchaseTimeEqualTo(Date value) {
+            addCriterion("purchase_time =", value, "purchaseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchaseTimeNotEqualTo(Date value) {
+            addCriterion("purchase_time <>", value, "purchaseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchaseTimeGreaterThan(Date value) {
+            addCriterion("purchase_time >", value, "purchaseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchaseTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("purchase_time >=", value, "purchaseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchaseTimeLessThan(Date value) {
+            addCriterion("purchase_time <", value, "purchaseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchaseTimeLessThanOrEqualTo(Date value) {
+            addCriterion("purchase_time <=", value, "purchaseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchaseTimeIn(List<Date> values) {
+            addCriterion("purchase_time in", values, "purchaseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchaseTimeNotIn(List<Date> values) {
+            addCriterion("purchase_time not in", values, "purchaseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchaseTimeBetween(Date value1, Date value2) {
+            addCriterion("purchase_time between", value1, value2, "purchaseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchaseTimeNotBetween(Date value1, Date value2) {
+            addCriterion("purchase_time not between", value1, value2, "purchaseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameIsNull() {
+            addCriterion("userName is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameIsNotNull() {
+            addCriterion("userName is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameEqualTo(String value) {
+            addCriterion("userName =", value, "username");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameNotEqualTo(String value) {
+            addCriterion("userName <>", value, "username");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameGreaterThan(String value) {
+            addCriterion("userName >", value, "username");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameGreaterThanOrEqualTo(String value) {
+            addCriterion("userName >=", value, "username");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameLessThan(String value) {
+            addCriterion("userName <", value, "username");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameLessThanOrEqualTo(String value) {
+            addCriterion("userName <=", value, "username");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameLike(String value) {
+            addCriterion("userName like", value, "username");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameNotLike(String value) {
+            addCriterion("userName not like", value, "username");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameIn(List<String> values) {
+            addCriterion("userName in", values, "username");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameNotIn(List<String> values) {
+            addCriterion("userName not in", values, "username");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameBetween(String value1, String value2) {
+            addCriterion("userName between", value1, value2, "username");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameNotBetween(String value1, String value2) {
+            addCriterion("userName not between", value1, value2, "username");
             return (Criteria) this;
         }
     }

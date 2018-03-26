@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by YukunGeng on 2018/3/18.
@@ -57,7 +58,13 @@ public class GoodsController extends BaseController {
     public ResponseStatus buyGoods(GoodsInfo goodsInfo) {
         Integer goodsId = goodsInfo.getGoodsId();
         Integer goodsCount = goodsInfo.getCount();
-        goodsService.buyGoodsById(goodsId, goodsCount);
+        goodsService.buyGoodsById(goodsId, goodsCount, goodsInfo.getUserName());
         return success("ok", "");
+    }
+
+    @RequestMapping(value = "/goods/purchased", method = RequestMethod.POST)
+    public ResponseStatus getPurchaseGoods(UserInfo userInfo) {
+        List<Goods> goods = goodsService.getGoodsResponseBuyed(userInfo.getUserName());
+        return success("ok", "", goods);
     }
 }

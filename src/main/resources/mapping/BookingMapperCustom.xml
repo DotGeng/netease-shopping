@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.netease.mapper.BookingMapperCustom">
+    <insert id="insertCodeBatch" parameterType="java.util.List">
+        <selectKey resultType="java.lang.Long" keyProperty="booking_id"
+                   order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into booking (booking_id, goods_id, goods_num,
+        buyed_price, purchase_time, userName
+        )
+        values
+        <foreach collection="list" item="booking" index="index" separator=",">
+            (
+            #{booking.bookingId}, #{booking.goodsId},
+            #{booking.goodsNum},
+            #{booking.buyedPrice},
+            #{booking.purchaseTime}, #{booking.username}
+            )
+        </foreach>
+    </insert>
+</mapper>

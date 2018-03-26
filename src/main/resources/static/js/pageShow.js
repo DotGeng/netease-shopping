@@ -68,12 +68,12 @@
                                 data: {goodsId: goodsId,count: count},
                                 url: '/goods/buying?userName=' + userName,
                                 success: function (result) {
-                                    loading.result('购买成功', function () {
-                                        location.href = '/static/show/account';
+                                    loading.result('成功加入购物查，请去购物车结算', function () {
+                                        location.href = '/static/show/purchase';
                                     });
                                 },
                                 error: function (message) {
-                                    loading.result(message || '购买失败');
+                                    loading.result(message || '购加入购物车失败');
                                 }
                             });
                         }.bind(this)

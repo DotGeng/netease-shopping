@@ -1,9 +1,12 @@
 package com.netease.service.impl;
 
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
 import com.netease.dao.BookingDao;
 import com.netease.dao.GoodsDao;
 import com.netease.dao.PurchaseDao;
 import com.netease.mapper.BookingMapper;
+import com.netease.mapper.PurchaseMapper;
 import com.netease.model.Booking;
 import com.netease.model.Goods;
 import com.netease.model.Purchase;
@@ -13,7 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by YukunGeng on 2018/3/17.
@@ -26,6 +29,7 @@ public class GoogsServiceImpl implements GoodsService {
     private BookingDao bookingDao;
     @Autowired
     private PurchaseDao purchaseDao;
+
     @Override
     public List<Goods> getAllGoods() {
         return goodsDao.getAllGoogs();
@@ -78,13 +82,71 @@ public class GoogsServiceImpl implements GoodsService {
 
     @Override
     @Transactional
-    public void  buyGoodsById(Integer goodsId, Integer goodsCount) {
+    public void  buyGoodsById(Integer goodsId, Integer goodsCount,String userName) {
         Goods goods = goodsDao.getGoodsById(goodsId);
-        Purchase purchase = new Purchase();
-        goods.setSoldCount(goodsCount);
-        purchase.setGoodsId(goodsId);
-        purchase.setGoodsNum(goodsCount);
-        purchaseDao.addGoods(purchase);
+        if(goods.getStorage() < (goodsCount + goods.getSoldCount()) ) {
+            return;
+        }
+        Purchase purchase = getPurchaseByGoodsId(goodsId);
+        if(purchase == null) {
+            purchase = new Purchase();
+            purchase.setGoodsId(goodsId);
+            purchase.setGoodsNum(goodsCount);
+            purchase.setPurchaseprice(goods.getGoodsPrice());
+            purchase.setUsername(userName);
+            purchaseDao.addGoods(purchase);
+        }else {
+            purchase.setGoodsNum(purchase.getGoodsNum() + goodsCount);
+            purchaseDao.updatePurchaseById(purchase);
+        }
         goodsDao.updateGoodsById(goods);
+    }
+
+    private Purchase getPurchaseByGoodsId(Integer goodsId) {
+        List<Purchase> purchases = purchaseDao.getPurchaseByGoodsId(goodsId);
+        if(purchases != null && purchases.size() > 0) {
+            return purchases.get(0);
+        }
+        return null;
+    }
+    @Override
+    public List<Goods> getGoodsResponseBuyed(String usrName) {
+        Map<Integer, Goods> goodsMap = new HashMap<>();
+        List<Purchase> purchases = purchaseDao.getPurchases(usrName);
+        if(purchases == null || purchases.size() == 0) {
+            return null;
+        }
+        List<Integer> goodsIds = new ArrayList<>();
+        for (Purchase purchase : purchases) {
+            goodsIds.add(purchase.getGoodsId());
+        }
+        List<Goods> goods = goodsDao.getGoodsByIds(goodsIds);
+        for (Goods gds: goods) {
+            goodsMap.put(gds.getGoodsId(), gds);
+        }
+        for(Purchase purchase: purchases) {
+             Goods tmpGoods = goodsMap.get(purchase.getGoodsId());
+            tmpGoods.setSoldCount(purchase.getGoodsNum());
+        }
+        List<Goods> goodsList = new ArrayList<>();
+        Iterator<Goods> iterator = goodsMap.values().iterator();
+        while(iterator.hasNext()) {
+            goodsList.add(iterator.next());
+        }
+
+        return goodsList;
+    }
+    private GoodsResponse copy(GoodsResponse gr, Goods gds) {
+        gr.setGoodsAbstract(gds.getGoodsAbstract());
+        gr.setContent(gds.getContent());
+        gr.setHasSeal(gds.getHasSeal());
+        gr.setPictureUrl(gds.getPictureUrl());
+        gr.setSoldCount(gds.getSoldCount());
+        gr.setTitle(gds.getTitle());
+        gr.setGoodsName(gds.getGoodsName());
+        gr.setStorage(gds.getStorage());
+        gr.setSellerId(gds.getSellerId());
+        gr.setGoodsPrice(gds.getGoodsPrice());
+        return gr;
     }
 }

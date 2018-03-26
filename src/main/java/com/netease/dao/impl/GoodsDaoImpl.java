@@ -52,4 +52,12 @@ public class GoodsDaoImpl implements GoodsDao {
     public void updateGoodsById(Goods goods) {
         goodsMapper.updateByPrimaryKeySelective(goods);
     }
+
+    @Override
+    public List<Goods> getGoodsByIds(List<Integer> goodIds) {
+        GoodsExample example = new GoodsExample();
+        GoodsCriteria.getCriteria(example).andGoodsIdIn(goodIds);
+        List<Goods> goods = goodsMapper.selectByExample(example);
+        return goods;
+    }
 }

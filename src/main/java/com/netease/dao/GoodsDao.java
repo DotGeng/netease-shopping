@@ -13,4 +13,5 @@ public interface GoodsDao {
     public boolean deleteGoodById(Integer goodsId);
     public Goods getGoodsById(Integer goodsId);
     public void updateGoodsById(Goods goods);
+    public List<Goods> getGoodsByIds(List<Integer> goodIds);
 }

@@ -6,6 +6,8 @@
     <result column="goods_id" property="goodsId" jdbcType="INTEGER" />
     <result column="goods_num" property="goodsNum" jdbcType="INTEGER" />
     <result column="buyed_price" property="buyedPrice" jdbcType="DOUBLE" />
+    <result column="purchase_time" property="purchaseTime" jdbcType="TIMESTAMP" />
+    <result column="userName" property="username" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -66,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    booking_id, goods_id, goods_num, buyed_price
+    booking_id, goods_id, goods_num, buyed_price, purchase_time, userName
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.netease.model.BookingExample" >
     select
@@ -100,9 +102,11 @@
   </delete>
   <insert id="insert" parameterType="com.netease.model.Booking" >
     insert into booking (booking_id, goods_id, goods_num, 
-      buyed_price)
+      buyed_price, purchase_time, userName
+      )
     values (#{bookingId,jdbcType=BIGINT}, #{goodsId,jdbcType=INTEGER}, #{goodsNum,jdbcType=INTEGER}, 
-      #{buyedPrice,jdbcType=DOUBLE})
+      #{buyedPrice,jdbcType=DOUBLE}, #{purchaseTime,jdbcType=TIMESTAMP}, #{username,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.netease.model.Booking" >
     insert into booking
@@ -119,6 +123,12 @@
       <if test="buyedPrice != null" >
         buyed_price,
       </if>
+      <if test="purchaseTime != null" >
+        purchase_time,
+      </if>
+      <if test="username != null" >
+        userName,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="bookingId != null" >
@@ -132,6 +142,12 @@
       </if>
       <if test="buyedPrice != null" >
         #{buyedPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="purchaseTime != null" >
+        #{purchaseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -156,6 +172,12 @@
       <if test="record.buyedPrice != null" >
         buyed_price = #{record.buyedPrice,jdbcType=DOUBLE},
       </if>
+      <if test="record.purchaseTime != null" >
+        purchase_time = #{record.purchaseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.username != null" >
+        userName = #{record.username,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -166,7 +188,9 @@
     set booking_id = #{record.bookingId,jdbcType=BIGINT},
       goods_id = #{record.goodsId,jdbcType=INTEGER},
       goods_num = #{record.goodsNum,jdbcType=INTEGER},
-      buyed_price = #{record.buyedPrice,jdbcType=DOUBLE}
+      buyed_price = #{record.buyedPrice,jdbcType=DOUBLE},
+      purchase_time = #{record.purchaseTime,jdbcType=TIMESTAMP},
+      userName = #{record.username,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -183,6 +207,12 @@
       <if test="buyedPrice != null" >
         buyed_price = #{buyedPrice,jdbcType=DOUBLE},
       </if>
+      <if test="purchaseTime != null" >
+        purchase_time = #{purchaseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="username != null" >
+        userName = #{username,jdbcType=VARCHAR},
+      </if>
     </set>
     where booking_id = #{bookingId,jdbcType=BIGINT}
   </update>
@@ -190,7 +220,9 @@
     update booking
     set goods_id = #{goodsId,jdbcType=INTEGER},
       goods_num = #{goodsNum,jdbcType=INTEGER},
-      buyed_price = #{buyedPrice,jdbcType=DOUBLE}
+      buyed_price = #{buyedPrice,jdbcType=DOUBLE},
+      purchase_time = #{purchaseTime,jdbcType=TIMESTAMP},
+      userName = #{username,jdbcType=VARCHAR}
     where booking_id = #{bookingId,jdbcType=BIGINT}
   </update>
 </mapper>

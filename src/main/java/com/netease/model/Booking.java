@@ -1,5 +1,7 @@
 package com.netease.model;
 
+import java.util.Date;
+
 public class Booking {
     private Long bookingId;
 
@@ -8,6 +10,10 @@ public class Booking {
     private Integer goodsNum;
 
     private Double buyedPrice;
+
+    private Date purchaseTime;
+
+    private String username;
 
     public Long getBookingId() {
         return bookingId;
@@ -39,5 +45,21 @@ public class Booking {
 
     public void setBuyedPrice(Double buyedPrice) {
         this.buyedPrice = buyedPrice;
+    }
+
+    public Date getPurchaseTime() {
+        return purchaseTime;
+    }
+
+    public void setPurchaseTime(Date purchaseTime) {
+        this.purchaseTime = purchaseTime;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username == null ? null : username.trim();
     }
 }
