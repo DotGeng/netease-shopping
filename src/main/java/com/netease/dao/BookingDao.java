@@ -10,4 +10,5 @@ import java.util.List;
 public interface BookingDao {
     public Booking getBookingByGoodsId(Integer goodsId);
     public int insertBatchBooking(List<Booking> bookings);
+    public List<Booking> getBookingByUserName(String userName);
 }

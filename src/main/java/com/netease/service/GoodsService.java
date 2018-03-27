@@ -1,6 +1,7 @@
 package com.netease.service;
 
 import com.netease.model.Goods;
+import com.netease.recventry.GoodsInfo;
 import com.netease.response.GoodsResponse;
 
 import java.util.List;
@@ -16,4 +17,5 @@ public interface GoodsService {
     public Goods getGoodsById(Integer goodsId);
     public void buyGoodsById(Integer goodsId, Integer goodsCount,String userName);
     public List<Goods> getGoodsResponseBuyed(String userName);
+    public Integer insertGoods(GoodsInfo goodsInfo);
 }

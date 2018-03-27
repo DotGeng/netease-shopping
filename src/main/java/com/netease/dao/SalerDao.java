@@ -7,4 +7,5 @@ import com.netease.model.Seller;
  */
 public interface SalerDao {
     public Seller getSellerBuSalerName(String salerName);
+
 }

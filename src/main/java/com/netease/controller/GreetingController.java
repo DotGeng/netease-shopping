@@ -53,4 +53,9 @@ public class GreetingController extends BaseController{
     public String showAccount() {
         return "/account";
     }
+    //获取发布页面
+    @RequestMapping("/static/show/publish")
+    public  String showPublish() {
+        return "public";
+    }
 }

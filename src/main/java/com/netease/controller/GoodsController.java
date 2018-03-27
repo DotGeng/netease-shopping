@@ -4,6 +4,7 @@ import com.netease.BaseController.ResponseStatus;
 import com.netease.model.Goods;
 import com.netease.recventry.GoodsInfo;
 import com.netease.recventry.UserInfo;
+import com.netease.response.GoodsResponse;
 import com.netease.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -66,5 +67,13 @@ public class GoodsController extends BaseController {
     public ResponseStatus getPurchaseGoods(UserInfo userInfo) {
         List<Goods> goods = goodsService.getGoodsResponseBuyed(userInfo.getUserName());
         return success("ok", "", goods);
+    }
+
+    @RequestMapping(value = "/goods/adding", method = RequestMethod.POST)
+    public ResponseStatus insertGoods(GoodsInfo goodsInfo) {
+        Integer goodsId = goodsService.insertGoods(goodsInfo);
+        GoodsResponse gr = new GoodsResponse();
+        gr.setGoodsId(goodsId);
+        return success("ok","",gr);
     }
 }

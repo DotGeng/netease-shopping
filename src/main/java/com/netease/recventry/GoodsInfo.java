@@ -1,13 +1,24 @@
 package com.netease.recventry;
 
+import com.netease.model.Goods;
+
 /**
  * Created by YukunGeng on 2018/3/20.
  */
-public class GoodsInfo {
+public class GoodsInfo extends Goods{
     private Integer goodsId;
     private String goodsName;
     private Integer count;
     private String userName;
+    private String salerName;
+
+    public String getSalerName() {
+        return salerName;
+    }
+
+    public void setSalerName(String salerName) {
+        this.salerName = salerName;
+    }
 
     public String getUserName() {
         return userName;

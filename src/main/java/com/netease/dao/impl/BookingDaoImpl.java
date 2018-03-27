@@ -9,6 +9,7 @@ import com.netease.model.BookingExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,5 +34,13 @@ public class BookingDaoImpl implements BookingDao {
     public int insertBatchBooking(List<Booking> bookings) {
         int res = boookingMapperCustom.insertCodeBatch(bookings);
         return res;
+    }
+
+    @Override
+    public List<Booking> getBookingByUserName(String userName) {
+        BookingExample example = new BookingExample();
+        BookingCriteria.getCriteria(example).andUsernameEqualTo(userName);
+        List<Booking> bookings = boookingMapperCustom.selectByExample(example);
+        return bookings;
     }
 }

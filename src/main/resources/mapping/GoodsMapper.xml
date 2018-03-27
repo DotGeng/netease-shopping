@@ -115,7 +115,11 @@
       #{pictureUrl,jdbcType=VARCHAR}, #{storage,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, 
       #{soldCount,jdbcType=INTEGER}, #{sellerId,jdbcType=BIGINT}, #{hasSeal,jdbcType=INTEGER}, 
       #{content,jdbcType=VARCHAR}, #{goodsAbstract,jdbcType=VARCHAR})
+    <selectKey keyProperty="goodsId" resultType="Integer" order="AFTER">
+      SELECT LAST_INSERT_ID() as id
+    </selectKey>
   </insert>
+
   <insert id="insertSelective" parameterType="com.netease.model.Goods" >
     insert into goods
     <trim prefix="(" suffix=")" suffixOverrides="," >

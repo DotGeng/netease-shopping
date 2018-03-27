@@ -4,7 +4,9 @@ import com.netease.model.Goods;
 import com.netease.model.GoodsExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface GoodsMapper {
     int countByExample(GoodsExample example);
 

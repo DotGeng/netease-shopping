@@ -5,11 +5,14 @@ import com.google.common.collect.Multimap;
 import com.netease.dao.BookingDao;
 import com.netease.dao.GoodsDao;
 import com.netease.dao.PurchaseDao;
+import com.netease.dao.SalerDao;
 import com.netease.mapper.BookingMapper;
 import com.netease.mapper.PurchaseMapper;
 import com.netease.model.Booking;
 import com.netease.model.Goods;
 import com.netease.model.Purchase;
+import com.netease.model.Seller;
+import com.netease.recventry.GoodsInfo;
 import com.netease.response.GoodsResponse;
 import com.netease.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +32,8 @@ public class GoogsServiceImpl implements GoodsService {
     private BookingDao bookingDao;
     @Autowired
     private PurchaseDao purchaseDao;
-
+    @Autowired
+    private SalerDao salerDao;
     @Override
     public List<Goods> getAllGoods() {
         return goodsDao.getAllGoogs();
@@ -148,5 +152,24 @@ public class GoogsServiceImpl implements GoodsService {
         gr.setSellerId(gds.getSellerId());
         gr.setGoodsPrice(gds.getGoodsPrice());
         return gr;
+    }
+
+    @Override
+    public Integer insertGoods(GoodsInfo goodsInfo) {
+        Seller seller = salerDao.getSellerBuSalerName(goodsInfo.getSalerName());
+        Goods goods = new Goods();
+        goods.setContent(goodsInfo.getContent());
+        goods.setSoldCount(0);
+        goods.setStorage(0);
+        goods.setHasSeal(0);
+        goods.setSellerId(seller.getSellerId());
+        goods.setGoodsAbstract(goodsInfo.getGoodsAbstract());
+        goods.setGoodsName(goodsInfo.getGoodsName());
+        goods.setGoodsPrice(goodsInfo.getGoodsPrice());
+        goods.setPictureUrl(goodsInfo.getPictureUrl());
+        goods.setTitle(goodsInfo.getTitle());
+        goods.setGoodsName(goodsInfo.getTitle());
+        goodsDao.insetGoods(goods);
+        return goods.getGoodsId();
     }
 }
