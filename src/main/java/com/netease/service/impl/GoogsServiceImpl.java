@@ -34,6 +34,7 @@ public class GoogsServiceImpl implements GoodsService {
     private PurchaseDao purchaseDao;
     @Autowired
     private SalerDao salerDao;
+
     @Override
     public List<Goods> getAllGoods() {
         return goodsDao.getAllGoogs();
@@ -86,20 +87,21 @@ public class GoogsServiceImpl implements GoodsService {
 
     @Override
     @Transactional
-    public void  buyGoodsById(Integer goodsId, Integer goodsCount,String userName) {
+    public void buyGoodsById(Integer goodsId, Integer goodsCount, String userName) {
         Goods goods = goodsDao.getGoodsById(goodsId);
-        if(goods.getStorage() < (goodsCount + goods.getSoldCount()) ) {
+        // 对库存不再限制
+       /* if (goods.getStorage() < (goodsCount + goods.getSoldCount())) {
             return;
-        }
+        }*/
         Purchase purchase = getPurchaseByGoodsId(goodsId);
-        if(purchase == null) {
+        if (purchase == null) {
             purchase = new Purchase();
             purchase.setGoodsId(goodsId);
             purchase.setGoodsNum(goodsCount);
             purchase.setPurchaseprice(goods.getGoodsPrice());
             purchase.setUsername(userName);
             purchaseDao.addGoods(purchase);
-        }else {
+        } else {
             purchase.setGoodsNum(purchase.getGoodsNum() + goodsCount);
             purchaseDao.updatePurchaseById(purchase);
         }
@@ -108,16 +110,17 @@ public class GoogsServiceImpl implements GoodsService {
 
     private Purchase getPurchaseByGoodsId(Integer goodsId) {
         List<Purchase> purchases = purchaseDao.getPurchaseByGoodsId(goodsId);
-        if(purchases != null && purchases.size() > 0) {
+        if (purchases != null && purchases.size() > 0) {
             return purchases.get(0);
         }
         return null;
     }
+
     @Override
     public List<Goods> getGoodsResponseBuyed(String usrName) {
         Map<Integer, Goods> goodsMap = new HashMap<>();
         List<Purchase> purchases = purchaseDao.getPurchases(usrName);
-        if(purchases == null || purchases.size() == 0) {
+        if (purchases == null || purchases.size() == 0) {
             return null;
         }
         List<Integer> goodsIds = new ArrayList<>();
@@ -125,21 +128,22 @@ public class GoogsServiceImpl implements GoodsService {
             goodsIds.add(purchase.getGoodsId());
         }
         List<Goods> goods = goodsDao.getGoodsByIds(goodsIds);
-        for (Goods gds: goods) {
+        for (Goods gds : goods) {
             goodsMap.put(gds.getGoodsId(), gds);
         }
-        for(Purchase purchase: purchases) {
-             Goods tmpGoods = goodsMap.get(purchase.getGoodsId());
+        for (Purchase purchase : purchases) {
+            Goods tmpGoods = goodsMap.get(purchase.getGoodsId());
             tmpGoods.setSoldCount(purchase.getGoodsNum());
         }
         List<Goods> goodsList = new ArrayList<>();
         Iterator<Goods> iterator = goodsMap.values().iterator();
-        while(iterator.hasNext()) {
+        while (iterator.hasNext()) {
             goodsList.add(iterator.next());
         }
 
         return goodsList;
     }
+
     private GoodsResponse copy(GoodsResponse gr, Goods gds) {
         gr.setGoodsAbstract(gds.getGoodsAbstract());
         gr.setContent(gds.getContent());
@@ -155,13 +159,11 @@ public class GoogsServiceImpl implements GoodsService {
     }
 
     @Override
+    @Transactional
     public Integer insertGoods(GoodsInfo goodsInfo) {
         Seller seller = salerDao.getSellerBuSalerName(goodsInfo.getSalerName());
         Goods goods = new Goods();
         goods.setContent(goodsInfo.getContent());
-        goods.setSoldCount(0);
-        goods.setStorage(0);
-        goods.setHasSeal(0);
         goods.setSellerId(seller.getSellerId());
         goods.setGoodsAbstract(goodsInfo.getGoodsAbstract());
         goods.setGoodsName(goodsInfo.getGoodsName());
@@ -171,5 +173,28 @@ public class GoogsServiceImpl implements GoodsService {
         goods.setGoodsName(goodsInfo.getTitle());
         goodsDao.insetGoods(goods);
         return goods.getGoodsId();
+    }
+
+    @Override
+    @Transactional
+    public void changeGoodsInfo(GoodsInfo goodsInfo) {
+        Seller seller = salerDao.getSellerBuSalerName(goodsInfo.getSalerName());
+        Goods goods = new Goods();
+        goods.setSellerId(seller.getSellerId());
+        copy(goodsInfo, goods);
+        goods.setSellerId(seller.getSellerId());
+        goodsDao.updateGoods(goods);
+
+    }
+
+    private void copy(GoodsInfo goodsInfo, Goods goods) {
+        goods.setGoodsId(goodsInfo.getGoodsId());
+        goods.setContent(goodsInfo.getContent());
+        goods.setGoodsAbstract(goodsInfo.getGoodsAbstract());
+        goods.setGoodsName(goodsInfo.getGoodsName());
+        goods.setGoodsPrice(goodsInfo.getGoodsPrice());
+        goods.setPictureUrl(goodsInfo.getPictureUrl());
+        goods.setTitle(goodsInfo.getTitle());
+        goods.setGoodsName(goodsInfo.getTitle());
     }
 }

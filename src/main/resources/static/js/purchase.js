@@ -21,7 +21,7 @@
                         tmp = tmp + '<thead><tr><th>内容图片</th><th>内容名称</th><th>选购数量</th><th>购买价格</th></tr></thead>';
                         tmp = tmp + ' <tbody>'+
                             '<tr>' +
-                            '<td><a href="./show.html"><img src="'+listResult[i].prictureUrl+'" alt=""></a></td>' +
+                            '<td><a href="./show.html"><img src="'+listResult[i].pictureUrl+'" alt=""></a></td>' +
                             '<td><h4><a href="./show.html">' + listResult[i].goodsName + '</a></h4></td>' +
                             '<td><span class="value">'+ listResult[i].soldCount +'</span></td>' +
                             '<td><span class="v-unit">¥</span><span class="value">'+ listResult[i].goodsPrice +'</span></td>' +

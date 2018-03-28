@@ -10,11 +10,20 @@ import java.util.List;
  */
 public interface GoodsDao {
     public List<Goods> getAllGoogs();
+
     public List<Goods> getGoodsNotSeal();
+
     public boolean deleteGoodById(Integer goodsId);
+
     public Goods getGoodsById(Integer goodsId);
+
     public void updateGoodsById(Goods goods);
+
     public List<Goods> getGoodsByIds(List<Integer> goodIds);
+
     public void updateGoods2HasSaldByIds(List<Integer> goodsIds, Goods goods);
+
     public void insetGoods(Goods goods);
+
+    public void updateGoods(Goods goods);
 }

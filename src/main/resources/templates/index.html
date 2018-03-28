@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/>
-<title>java</title>
-<link rel="stylesheet" href="/css/style.css"/>
+    <meta charset="utf-8"/>
+    <title>java</title>
+    <link rel="stylesheet" href="/css/style.css"/>
 </head>
 <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
 <body>
@@ -11,13 +11,13 @@
 <div class="n-head">
     <div class="g-doc f-cb">
         <div class="user" id="greetingLabel">
-            买家你好，<span class="name" id="userNameForIndex"></span>！<a class="logout" href="">[退出]</a>
-            <a class="login" href="./login.html">[请登录]</a>
+            买家你好，<span class="name" id="userName"></span>！<a class="logout" id="logout" href="javascript:void(0);">[退出]</a>
+            <a class="login" href="javascript:void(0);">[请登录]</a>
         </div>
         <ul class="nav">
             <li><a href="/get/index">首页</a></li>
-            <li><a href="/static/show/account">账务</a></li>
-            <li><a id="sendMessageOrBuyCart" href="./public.html">发布</a></li>
+            <li><a id="index" href="/static/show/account">账务</a></li>
+            <li><a id="sendMessageOrBuyCart" href="/static/show/publish">发布</a></li>
         </ul>
     </div>
 </div>
@@ -25,14 +25,14 @@
     <div class="m-tab m-tab-fw m-tab-simple f-cb">
         <div class="tab">
             <ul>
-                <li id="selector_1" class="z-sel"><a id="allGoods" >所有内容</a></li>
+                <li id="selector_1" class="z-sel"><a id="allGoods">所有内容</a></li>
                 <li id="selector_2"><a id="notSealGoods">未购买的内容</a></li>
             </ul>
         </div>
     </div>
     <div class="n-plist">
         <ul class="f-cb" id="plist">
-            <li id="p-1">
+            <!--<li id="p-1">
                 <a href="./show.html" class="link">
                     <div class="img"><img src="http://nec.netease.com/img/s/1.jpg" alt=""></div>
                     <h3>内容</h3>
@@ -103,7 +103,7 @@
                     <div class="price"><span class="v-unit">¥</span><span class="v-value">123.9</span></div>
                 </a>
                 <span class="u-btn u-btn-normal u-btn-xs del" data-del="9">删除</span>
-            </li>
+            </li>-->
         </ul>
     </div>
 </div>
@@ -113,5 +113,6 @@
 
 <script type="text/javascript" src="/js/global.js"></script>
 <script type="text/javascript" src="/js/pageIndex.js"></script>
+<script type="text/javascript" src="/js/title4buyer.js"></script>
 </body>
 </html>

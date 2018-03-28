@@ -30,8 +30,12 @@ public class GreetingController extends BaseController{
         return "/salerIndex";
     }
 
+    @RequestMapping("/static/saler/index")
+    public String staticSalerIndex() {
+        return "/salerIndex";
+    }
     // 获取显商品浏览页面
-    @RequestMapping("get/index")
+    @RequestMapping("/get/index")
     public String index() {
         return "/index";
     }
@@ -56,6 +60,12 @@ public class GreetingController extends BaseController{
     //获取发布页面
     @RequestMapping("/static/show/publish")
     public  String showPublish() {
-        return "public";
+        return "/public";
     }
+    // 获取编辑页面
+    @RequestMapping("/static/show/editor")
+    public String editor(){
+        return "/edit";
+    }
+
 }

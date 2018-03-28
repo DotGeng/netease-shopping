@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/>
-<title>java</title>
-<link rel="stylesheet" href="/css/style.css"/>
+    <meta charset="utf-8"/>
+    <title>java</title>
+    <link rel="stylesheet" href="/css/style.css"/>
 </head>
 <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
 <body>
 <div class="n-head">
     <div class="g-doc f-cb">
         <div class="user">
-            卖家你好，<span id="salerName" class="name">mmmmm</span>！<a href="">[退出]</a>
-            请<a href="./login.html">[登录]</a>
+            卖家你好，<span id="salerName" class="name">mmmmm</span>！<a id="logout" href="javascript:void(0);">[退出]</a>
+            <a id="login" href="javascript:void(0);">[请登录]</a>
         </div>
         <ul class="nav">
-            <li><a href="./index.html">首页</a></li>
-            <li><a href="./account.html">账务</a></li>
-            <li><a href="./public.html">发布</a></li>
+            <li><a href="/static/saler/index">首页</a></li>
+            <!--<li><a href="/static/show/account">账务</a></li>-->
+            <li><a href="/static/show/publish">发布</a></li>
         </ul>
     </div>
 </div>
@@ -34,7 +34,8 @@
     </div>
 
     <div class="n-public">
-        <form class="m-form m-form-ht" id="form" method="post" action="./publicSubmit.html" onsubmit="return false;" autocomplete="off">
+        <form class="m-form m-form-ht" id="form" method="post" action="./publicSubmit.html" onsubmit="return false;"
+              autocomplete="off">
             <div class="fmitem">
                 <label class="fmlab">标题：</label>
                 <div class="fmipt">
@@ -51,7 +52,6 @@
                 <label class="fmlab">图片：</label>
                 <div class="fmipt">
                     <input class="u-ipt ipt" id="pictureUrl" name="pictureUrl" placeholder="图片地址"/>
-
                 </div>
             </div>
             <!--onclick="jQuery.doUpload();"-->
@@ -81,6 +81,6 @@
 </div>
 <script type="text/javascript" src="/js/global.js"></script>
 <script type="text/javascript" src="/js/public.js"></script>
-<script type="text/javascript" src="/js/title.js"></script>
+<script type="text/javascript" src="/js/title4saler.js"></script>
 </body>
 </html>

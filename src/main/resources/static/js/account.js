@@ -13,13 +13,14 @@
                     $("#account").empty();
                     var sumPrice = 0;
                     var tmp = "";
+                    tmp = tmp +'<colgroup><col class="img"/><col/><col class="time"/><col class="price"/></colgroup>';
+                    tmp = tmp + '<thead><tr><th>内容图片</th><th>标题</th><th>选购时间</th><th>购买价格</th><th>选购数量</th></tr></thead>';
                     for (var i = 0; i < n; i++) {
-                        tmp = '<colgroup><col class="img"/><col/><col class="time"/><col class="price"/></colgroup>';
-                        tmp = tmp + '<thead><tr><th>内容图片</th><th>标题</th><th>选购时间</th><th>购买价格</th><th>选购数量</th></tr></thead>';
+
                         tmp = tmp + ' <tbody>'+
                             '<tr>' +
-                            '<td><a href="./show.html"><img src="'+listResult[i].pictureUrl+'" alt=""></a></td>' +
-                            '<td><h4><a href="./show.html">' + listResult[i].title + '</a></h4></td>' +
+                            '<td><a><img src="'+listResult[i].pictureUrl+'" alt=""></a></td>' +
+                            '<td><h4><a >' + listResult[i].title + '</a></h4></td>' +
                             '<td><span class="value">'+ listResult[i].purchaseTime +'</span></td>' +
                             '<td><span class="v-unit">¥</span><span class="value">'+ listResult[i].buyedPrice +'</span></td>' +
                             '<td><span class="value">'+ listResult[i].goodsNum +'</span></td>' +

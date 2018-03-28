@@ -18,4 +18,5 @@ public interface GoodsService {
     public void buyGoodsById(Integer goodsId, Integer goodsCount,String userName);
     public List<Goods> getGoodsResponseBuyed(String userName);
     public Integer insertGoods(GoodsInfo goodsInfo);
+    public void changeGoodsInfo(GoodsInfo goodsInfo);
 }

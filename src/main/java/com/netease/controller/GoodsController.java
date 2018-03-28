@@ -74,6 +74,12 @@ public class GoodsController extends BaseController {
         Integer goodsId = goodsService.insertGoods(goodsInfo);
         GoodsResponse gr = new GoodsResponse();
         gr.setGoodsId(goodsId);
-        return success("ok","",gr);
+        return success("ok", "", gr);
+    }
+
+    @RequestMapping(value = "/goods/changing", method = RequestMethod.POST)
+    public ResponseStatus changeGoodsInfo(GoodsInfo goodsInfo) {
+        goodsService.changeGoodsInfo(goodsInfo);
+        return success("ok","","");
     }
 }

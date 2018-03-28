@@ -65,6 +65,7 @@
                 $("#plist").append('<ul class="f-cb" id="plist">');
                 for (var i = 0; i < n; i++) {
                     var soldCount = listResult[i].soldCount;
+                    var hasSeal = listResult[i].hasSeal;
                     var tmp =  '<li id="p-' + i + '">' +
                         '<input style="display:none" value="'+ listResult[i].goodsId +'"/>' +
                         '<a href="/static/show/saler" onclick="jQuery.hrefgoodsdetailForSaler('+listResult[i].goodsId+')" class="link">' +
@@ -72,7 +73,7 @@
                         '<h3>' + '已卖出' + soldCount + '件' + '</h3>' +
                         '<div class="price"><span class="v-unit">¥</span><span class="v-value">' + listResult[i].goodsPrice + '</span></div>' +
                         '</a>';
-                    if (soldCount == 0) {
+                    if (hasSeal == 0) {
                         var id = "p-" + i;
                         tmp = tmp + '<span class="u-btn u-btn-normal u-btn-xs del" data-del="' + i + '">删除</span></li>';
                         $/*("#" + id).append();*/
@@ -87,7 +88,7 @@
     };
     if ("" != salerName && salerName != null) {
         $("#notSealGoods").hide();
-        document.getElementById('userNameForIndex').innerHTML = salerName;
+        document.getElementById('salerName').innerHTML = salerName;
         /*document.getElementById('sendMessageOrBuyCart').innerHTML = '<a  href="./public.html">购物车</a>';*/
         var logoutElements = document.getElementsByClassName("login");
         for (var i = 0; i < logoutElements.length; i++) {

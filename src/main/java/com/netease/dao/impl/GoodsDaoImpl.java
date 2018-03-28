@@ -25,6 +25,7 @@ public class GoodsDaoImpl implements GoodsDao {
     private GoodsMapper goodsMapper;
     @Autowired
     private SalerDao salerDao;
+
     @Override
     public List<Goods> getAllGoogs() {
         GoodsExample example = new GoodsExample();
@@ -44,7 +45,7 @@ public class GoodsDaoImpl implements GoodsDao {
     @Override
     public boolean deleteGoodById(Integer goodsId) {
         int res = goodsMapper.deleteByPrimaryKey(goodsId);
-        if(res > 0) {
+        if (res > 0) {
             return true;
         }
         return false;
@@ -73,7 +74,7 @@ public class GoodsDaoImpl implements GoodsDao {
     public void updateGoods2HasSaldByIds(List<Integer> goodsIds, Goods Goods) {
         GoodsExample example = new GoodsExample();
         GoodsCriteria.getCriteria(example).andGoodsIdIn(goodsIds);
-        goodsMapper.updateByExample(Goods, example);
+        goodsMapper.updateByExampleSelective(Goods, example);
     }
 
     @Override
@@ -81,4 +82,8 @@ public class GoodsDaoImpl implements GoodsDao {
         goodsMapper.insert(goods);
     }
 
+    @Override
+    public void updateGoods(Goods goods) {
+        goodsMapper.updateByPrimaryKeySelective(goods);
+    }
 }

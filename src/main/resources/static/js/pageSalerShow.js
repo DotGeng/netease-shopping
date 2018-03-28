@@ -40,7 +40,7 @@
                         '<span class="v-unit">¥</span><span class="v-value">' + price + '</span>' +
                         '</div>' +
                         '<div class="oprt f-cb">' +
-                        '<a href="./edit.html" class="u-btn u-btn-primary">编 辑</a>' +
+                        '<a href="/static/show/editor" id="" class="u-btn u-btn-primary">编 辑</a>' +
                         '</div>' +
                         '</div>';
                     $("#showContent").empty();

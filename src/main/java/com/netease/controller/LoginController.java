@@ -16,26 +16,29 @@ import javax.servlet.http.HttpSession;
  */
 
 @RestController
-public class LoginController extends BaseController{
+public class LoginController extends BaseController {
 
     @Autowired
     private UserService userService;
+
     // 买家登录
-    @RequestMapping(value = "/post/sessions/create",method = RequestMethod.POST)
+    @RequestMapping(value = "/post/sessions/create", method = RequestMethod.POST)
     public ResponseStatus login(@ModelAttribute UserInfo userInfo, HttpSession session) {
-        return success(session.getId(),"ok",userInfo.getUserName(),"");
-    }
-    // 卖家登录
-    @RequestMapping(value = "/post/sessions/saler/new",method = RequestMethod.POST)
-    public ResponseStatus salerLogin(@ModelAttribute SalerInfo salerInfo, HttpSession session) {
-        return success(session.getId(),"ok",salerInfo.getSalerName(),"");
-    }
-    // 注销
-    @RequestMapping(value = "/test",method = RequestMethod.GET)
-    public ResponseStatus test(@ModelAttribute UserInfo userInfo, HttpSession session) {
-        return success(session.getId(),"ok","1","");
+        return success(session.getId(), "ok", userInfo.getUserName(), "");
     }
 
+    // 卖家登录
+    @RequestMapping(value = "/post/sessions/saler/new", method = RequestMethod.POST)
+    public ResponseStatus salerLogin(@ModelAttribute SalerInfo salerInfo, HttpSession session) {
+        return success(session.getId(), "ok", salerInfo.getSalerName(), "");
+    }
+
+    // 用户注销
+    @RequestMapping(value = "/logout", method = RequestMethod.POST)
+    public ResponseStatus test(@ModelAttribute UserInfo userInfo, HttpSession session) {
+        session.removeAttribute(userInfo.getUserName());
+        return success("ok", "", "");
+    }
 
 
 }

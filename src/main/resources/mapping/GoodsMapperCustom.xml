@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.netease.mapper.GoodsMapperCustom" >
-
+<mapper namespace="com.netease.mapper.GoodsMapperCustom">
+    <insert id="insert" parameterType="com.netease.model.Goods">
+        insert into goods (goods_id, goods_name, goods_price,
+        picture_url, storage, title,
+        sold_count, seller_id, has_seal,
+        content, goods_abstract)
+        values (#{goodsId,jdbcType=INTEGER}, #{goodsName,jdbcType=VARCHAR}, #{goodsPrice,jdbcType=DOUBLE},
+        #{pictureUrl,jdbcType=VARCHAR}, #{storage,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR},
+        #{soldCount,jdbcType=INTEGER}, #{sellerId,jdbcType=BIGINT}, #{hasSeal,jdbcType=INTEGER},
+        #{content,jdbcType=VARCHAR}, #{goodsAbstract,jdbcType=VARCHAR})
+        <selectKey keyProperty="goodsId" resultType="Integer" order="AFTER">
+            SELECT LAST_INSERT_ID() as id
+        </selectKey>
+    </insert>
 </mapper>

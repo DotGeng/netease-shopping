@@ -1,4 +1,5 @@
 (function (w, d, u) {
+    sessionStorage.clear();
     var loginForm = util.get('loginForm');
     if (!loginForm) {
         return;

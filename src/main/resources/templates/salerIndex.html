@@ -11,11 +11,11 @@
 <div class="n-head">
     <div class="g-doc f-cb">
         <div class="user" id="greetingLabel">
-            卖家你好，<span class="name" id="userNameForIndex"></span>！<a class="logout" href="">[退出]</a>
-            <a class="login" href="./login.html">[请登录]</a>
+            卖家你好，<span class="name" id="salerName"></span>！<a id="logout" class="logout" href="javacript:void(0);">[退出]</a>
+            <a id="login" class="login" href="javacript:void(0);">[请登录]</a>
         </div>
         <ul class="nav">
-            <li><a href="./index.html">首页</a></li>
+            <li><a href="/static/saler/index">首页</a></li>
             <!--<li><a href="./account.html">账务</a></li>-->
             <li><a id="sendMessageOrBuyCart" href="/static/show/publish">发布</a></li>
         </ul>
@@ -32,7 +32,7 @@
     </div>
     <div class="n-plist">
         <ul class="f-cb" id="plist">
-            <li id="p-1">
+            <!--<li id="p-1">
                 <a href="./show.html" class="link">
                     <div class="img"><img src="http://nec.netease.com/img/s/1.jpg" alt=""></div>
                     <h3>内容</h3>
@@ -103,7 +103,7 @@
                     <div class="price"><span class="v-unit">¥</span><span class="v-value">123.9</span></div>
                 </a>
                 <span class="u-btn u-btn-normal u-btn-xs del" data-del="9">删除</span>
-            </li>
+            </li>-->
         </ul>
     </div>
 </div>
@@ -112,5 +112,6 @@
 </div>
 <script type="text/javascript" src="/js/global.js"></script>
 <script type="text/javascript" src="/js/pageSalerIndex.js"></script>
+<script type="text/javascript" src="/js/title4saler.js"></script>
 </body>
 </html>
