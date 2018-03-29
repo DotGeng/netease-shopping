@@ -49,7 +49,7 @@
                     var temp = '<li id="p-" + i + ">' +
                         '<a href="/goods/page/detail?userName=' + sessionStorage.getItem("userName") + '" onclick="jQuery.hrefgoodsdetail(' + listResult[i].goodsId + ')" class="link">' +
                         '<div class="img"><img src= "' + listResult[i].pictureUrl + '"  alt=""></div>' +
-                        '<h3>' + listResult[i].content + '</h3>' +
+                        '<h3>' + listResult[i].title + '</h3>' +
                         '<div class="price"><span class="v-unit">¥</span><span class="v-value">' + listResult[i].goodsPrice + '</span></div>';
                     if (listResult[i].hasSeal == 1) {
                         temp = temp + '<span class="had"><b>已购买</b></span>';

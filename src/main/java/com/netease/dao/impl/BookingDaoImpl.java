@@ -43,4 +43,12 @@ public class BookingDaoImpl implements BookingDao {
         List<Booking> bookings = boookingMapperCustom.selectByExample(example);
         return bookings;
     }
+
+    @Override
+    public List<Booking> getBookingsByGoodsIds(List<Integer> goodsIds) {
+        BookingExample example = new BookingExample();
+        BookingCriteria.getCriteria(example).andGoodsIdIn(goodsIds);
+        List<Booking> bookings = boookingMapperCustom.selectByExample(example);
+        return bookings;
+    }
 }

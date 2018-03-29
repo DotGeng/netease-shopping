@@ -28,6 +28,10 @@ spring:
     testOnReturn: false
     poolPreparedStatements: true
     maxOpenPreparedStatements: 20
+  servlet:
+    multipart:
+      max-file-size: 1Mb
+
 ##  dubbo:
 ##     application:
 ##       name: consumer

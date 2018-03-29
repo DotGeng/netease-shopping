@@ -20,7 +20,7 @@
                 window.location.href = "/get/sessions/saler/news";
             },
             error: function (result) {
-                alert("退出失败" + result);
+                window.location.href = "/get/sessions/saler/news";
             }
         });
     });

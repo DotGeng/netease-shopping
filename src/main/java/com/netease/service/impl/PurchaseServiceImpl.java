@@ -50,6 +50,7 @@ public class PurchaseServiceImpl implements PurchaseService {
         goods.setHasSeal(1);
         updateGoodsHasSaled(goodsIds, goods);
         purchaseDao.deletePurchaseByUserName(userName);
+
         bookingDao.insertBatchBooking(bookings);
     }
 

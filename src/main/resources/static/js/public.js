@@ -37,7 +37,7 @@
                         $("#imgpre").attr("src",url);
                     },
                     error: function (result) {
-                        alert("上传失败" + result);
+                        alert("上传失败，请保证图片大小小于1Mb" + result);
                     }
                 });
             });

@@ -35,9 +35,28 @@ public class GoogsServiceImpl implements GoodsService {
     @Autowired
     private SalerDao salerDao;
 
+
     @Override
     public List<Goods> getAllGoods() {
-        return goodsDao.getAllGoogs();
+        List<Integer> goodsIds = new ArrayList<>();
+        List<Goods> goodsList = goodsDao.getAllGoogs();
+        Map<Integer, Booking> goodsId2Booking = new HashMap<>();
+        for (Goods g : goodsList) {
+            goodsIds.add(g.getGoodsId());
+        }
+        List<Booking> bookingList = bookingDao.getBookingsByGoodsIds(goodsIds);
+        for (Booking booking : bookingList) {
+            goodsId2Booking.put(booking.getGoodsId(), booking);
+        }
+        if (bookingList == null) {
+            return goodsList;
+        }
+        for (Goods g : goodsList) {
+            if (goodsId2Booking.get(g.getGoodsId()) != null) {
+                g.setSoldCount(goodsId2Booking.get(g.getGoodsId()).getGoodsNum());
+            }
+        }
+        return goodsList;
     }
 
     @Override

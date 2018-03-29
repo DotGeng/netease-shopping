@@ -21,9 +21,9 @@
                         value1 = salerName.value;
                         isSaler = true;
                     }
-                    //var value2 = md5(password.value);
+                    var value2 = md5(password.value);
                     // 密码传输改为不用md5加密
-                    var value2 = password.value;
+                    //var value2 = password.value;
 
                     isSubmiting = true;
                     loading.show();

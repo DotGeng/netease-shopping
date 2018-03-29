@@ -9,6 +9,7 @@ import com.netease.recventry.UserInfo;
 import com.netease.service.SalerService;
 import com.netease.service.UserService;
 import com.netease.util.CookieUtils;
+import com.netease.util.CryptUtils;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.server.Session;
@@ -47,6 +48,7 @@ public class LoginInteceptor implements HandlerInterceptor {
         String URL = request.getRequestURI();
         if (userName != null) {
             // 买家登录的过滤器
+
             return buyerLoginInteceptor(request, response, handler);
         }
         if (salerName != null) {
@@ -92,9 +94,9 @@ public class LoginInteceptor implements HandlerInterceptor {
             // 访问数据库，验证用户名和密码的正确性
             Seller seller = salerService.getSellerBySalerName(salerName.toString());
             String passwordInDb = seller.getPassword();
-            if (seller == null || !passwordInDb.equals(password.toString())) {
+            String passwordTransMd5 = CryptUtils.GetMD5Code(passwordInDb);
+            if (seller == null || !passwordTransMd5.equals(password.toString())) {
                 response.getWriter().append("{\"code\": 1,\"content\": \"error\"}");
-
                 return false;
             }
             // 设定session
@@ -113,6 +115,7 @@ public class LoginInteceptor implements HandlerInterceptor {
 
     // 买家登录的过滤器
     public boolean buyerLoginInteceptor(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+
         HttpSession session = request.getSession();
         String url = request.getRequestURI();
         System.out.println(url);
@@ -145,9 +148,9 @@ public class LoginInteceptor implements HandlerInterceptor {
             // 访问数据库，验证用户名和密码的正确性
             User user = userService.getUserInfoByUserName(userName.toString());
             String passwordInDb = user.getPassword();
-            if (user == null || !passwordInDb.equals(password.toString())) {
+            String passwordTransMd5 = CryptUtils.GetMD5Code(passwordInDb);
+            if (user == null || !passwordTransMd5.equals(password.toString())) {
                 response.getWriter().append("{\"code\": 1,\"content\": \"error\"}");
-
                 return false;
             }
             // 设定session
@@ -157,12 +160,10 @@ public class LoginInteceptor implements HandlerInterceptor {
             CookieUtils.setCookie(request, response, "NE_SHOPPING", userName.toString());
             return true;
         }
-        if (!password.toString().equals(userInfo.getPassword())) {
+        if (!CryptUtils.GetMD5Code(password.toString()).equals(userInfo.getPassword())) {
             return false;
         }
         session.setMaxInactiveInterval(15 * 60);
         return true;
     }
-
-
 }
