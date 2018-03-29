@@ -3,7 +3,7 @@
 ## 1 buyer和seller登录系统：
 
  - buyer买家登录系统的地址为：http://localhost:8080/get/sessions/new
- - seller卖家登录系统的地址为：http://localhost:8080/get/sessions/saler/news
+ - seller卖家登录系统的地址为：http://localhost:8080/get/sessions/seller/news
 
 ## 2 系统部署说明：
 ### 2.1 web 项目部署

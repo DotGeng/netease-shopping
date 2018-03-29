@@ -17,10 +17,10 @@
             success: function (result) {
                 sessionStorage.clear();
                 //window.location.reload();
-                window.location.href = "/get/sessions/saler/news";
+                window.location.href = "/get/sessions/seller/news";
             },
             error: function (result) {
-                window.location.href = "/get/sessions/saler/news";
+                window.location.href = "/get/sessions/seller/news";
             }
         });
     });

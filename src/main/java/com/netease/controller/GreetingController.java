@@ -20,7 +20,7 @@ public class GreetingController extends BaseController{
         return "/login";
     }
     // 卖家获取登录页面
-    @RequestMapping("/get/sessions/saler/news")
+    @RequestMapping("/get/sessions/seller/news")
     public String salerLongin() {
         return "/salerlogin";
     }

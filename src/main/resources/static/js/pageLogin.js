@@ -38,7 +38,7 @@
                                 location.href = '/get/index?' + 'userName=' + value1;
                                 sessionStorage.setItem("userName", value1);
                             } else {
-                                location.href = '/get/sessions/saler/news?' + 'salerName' + value1;
+                                location.href = '/get/sessions/seller/news?' + 'salerName' + value1;
                                 sessionStorage.setItem("salerName", value1)
                             }
 
